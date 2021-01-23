@@ -80,3 +80,13 @@ Entrypoint application = js/application-25c1cd7f9bc59b7b511a.js js/application-2
 Completed 200 OK in 2560ms (Views: 2556.6ms | ActiveRecord: 0.0ms | Allocations: 126596)
 
 
+Started GET "/api/v1/finders" for ::1 at 2021-01-23 14:57:39 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.4ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 3.1ms | Allocations: 1510)
+Completed 200 OK in 9ms (Views: 2.2ms | ActiveRecord: 1.6ms | Allocations: 4581)
+
+
