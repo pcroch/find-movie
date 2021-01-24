@@ -65,3 +65,6 @@ gem 'pundit'
 
 # Gemfile
 gem 'simple_token_authentication'
+
+# fetch api
+gem 'excon-rails', '~> 1.0'

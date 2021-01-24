@@ -3056,3 +3056,267 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 201 Created in 9ms (Views: 1.0ms | ActiveRecord: 1.7ms | Allocations: 6734)
 
 
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:59:47 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:28:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:01:07.403214"], ["updated_at", "2021-01-24 15:01:07.403214"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:28:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:28:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.6ms | Allocations: 318)
+Completed 201 Created in 79519ms (Views: 2.4ms | ActiveRecord: 14.2ms | Allocations: 550474)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:01:10 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 5.1ms | Allocations: 14686)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'finder' for Finder.):
+  
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:01:37 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:30: syntax error, unexpected tSTRING_DEND, expecting ')'
+...nglish"], "rating"=>["5", "9"]})
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:61: syntax error, unexpected tSTRING_DEND, expecting '}'
+... @finder.errors.full_messages },
+...                              ^):
+  
+app/controllers/api/v1/finders_controller.rb:30: syntax error, unexpected tSTRING_DEND, expecting ')'
+app/controllers/api/v1/finders_controller.rb:61: syntax error, unexpected tSTRING_DEND, expecting '}'
+app/controllers/api/v1/finders_controller.rb:30: syntax error, unexpected tSTRING_DEND, expecting ')'
+app/controllers/api/v1/finders_controller.rb:61: syntax error, unexpected tSTRING_DEND, expecting '}'
+app/controllers/api/v1/finders_controller.rb:30: syntax error, unexpected tSTRING_DEND, expecting ')'
+app/controllers/api/v1/finders_controller.rb:61: syntax error, unexpected tSTRING_DEND, expecting '}'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:02:02 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:34:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:02:02.158786"], ["updated_at", "2021-01-24 15:02:02.158786"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:34:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:34:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 195)
+Completed 201 Created in 40ms (Views: 1.1ms | ActiveRecord: 6.7ms | Allocations: 18106)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:27:15 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:24: syntax error, unexpected ']', expecting ')'
+...s = find_country(finder_params]
+...                              ^):
+  
+app/controllers/api/v1/finders_controller.rb:24: syntax error, unexpected ']', expecting ')'
+app/controllers/api/v1/finders_controller.rb:24: syntax error, unexpected ']', expecting ')'
+app/controllers/api/v1/finders_controller.rb:24: syntax error, unexpected ']', expecting ')'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:27:29 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:30:51 +0000
+Completed 500 Internal Server Error in 205019ms (ActiveRecord: 4.0ms | Allocations: 939288)
+
+
+  
+NoMethodError (undefined method `gsub' for #<ActionController::Parameters:0x00007f815850e688>):
+  
+app/controllers/api/v1/finders_controller.rb:79:in `find_country'
+app/controllers/api/v1/finders_controller.rb:24:in `create'
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 111588ms (ActiveRecord: 3.1ms | Allocations: 164870)
+
+
+  
+NameError (uninitialized constant Api::V1::FindersController::Excon):
+  
+app/controllers/api/v1/finders_controller.rb:68:in `request_api'
+app/controllers/api/v1/finders_controller.rb:79:in `find_country'
+app/controllers/api/v1/finders_controller.rb:24:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:33:04 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (199.04ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (43 Bytes)[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:34:40 +0000
+  [1m[34mExcon Request[0m (181.26ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:36:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:34:44.700573"], ["updated_at", "2021-01-24 15:34:44.700573"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:36:in `create'
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:36:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 318)
+Completed 201 Created in 100215ms (Views: 1.5ms | ActiveRecord: 14.1ms | Excon: 380.3ms | Allocations: 1372499)
+
+
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:36:03 +0000
+Completed 500 Internal Server Error in 82950ms (ActiveRecord: 3.3ms | Allocations: 995393)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/api/v1/finders_controller.rb:79:in `find_country'
+app/controllers/api/v1/finders_controller.rb:25:in `create'
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:37:17 +0000
+  [1m[34mExcon Request[0m (187.50ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:37:24.042869"], ["updated_at", "2021-01-24 15:37:24.042869"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 124)
+Completed 201 Created in 76193ms (Views: 0.8ms | ActiveRecord: 7.4ms | Excon: 187.5ms | Allocations: 738712)
+
+
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (151.97ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:37:24.340415"], ["updated_at", "2021-01-24 15:37:24.340415"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 123)
+Completed 201 Created in 235ms (Views: 1.0ms | ActiveRecord: 6.5ms | Excon: 152.0ms | Allocations: 24102)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:37:32 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (152.50ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:37:33.283491"], ["updated_at", "2021-01-24 15:37:33.283491"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.7ms | Allocations: 318)
+Completed 201 Created in 252ms (Views: 2.5ms | ActiveRecord: 6.4ms | Excon: 152.5ms | Allocations: 29280)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:38:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (179.20ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:38:32.870087"], ["updated_at", "2021-01-24 15:38:32.870087"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 195)
+Completed 201 Created in 255ms (Views: 1.0ms | ActiveRecord: 6.8ms | Excon: 179.2ms | Allocations: 24074)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:39:06 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (184.06ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (43 Bytes)[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:41:20 +0000
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:41:25.277525"], ["updated_at", "2021-01-24 15:41:25.277525"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 124)
+Completed 201 Created in 138728ms (Views: 1.0ms | ActiveRecord: 13.5ms | Excon: 184.1ms | Allocations: 1464532)
+
+
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.9ms | Allocations: 9483)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/api/v1/finders_controller.rb:83:in `find_country'
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:41:41 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.3ms | Allocations: 10213)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/api/v1/finders_controller.rb:83:in `find_country'
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:41:52 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.8ms | Allocations: 9477)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/api/v1/finders_controller.rb:83:in `find_country'
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 15:42:00 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1", "duration"=>"1", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (182.23ms)  GET https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=1&years[]=1&pro[]=1[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (43 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "success"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 15:42:00.719983"], ["updated_at", "2021-01-24 15:42:00.719983"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:38:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 205)
+Completed 201 Created in 262ms (Views: 1.5ms | ActiveRecord: 4.8ms | Excon: 182.2ms | Allocations: 27715)
+
+
