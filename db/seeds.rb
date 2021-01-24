@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+user = User.create(email: "pierre@pierre.pierre", password: 'testest')
+
+testing = Finder.create(release: "2008", rating: ["1", "2"])

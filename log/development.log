@@ -2468,3 +2468,591 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 201 Created in 10ms (Views: 1.8ms | ActiveRecord: 1.3ms | Allocations: 4912)
 
 
+Started GET "/api/v1/finders" for ::1 at 2021-01-24 14:07:11 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.6ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 23.2ms | Allocations: 8616)
+Completed 200 OK in 36ms (Views: 22.4ms | ActiveRecord: 3.3ms | Allocations: 11059)
+
+
+Started GET "/api/v1/finders" for ::1 at 2021-01-24 14:07:38 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 15.0ms | Allocations: 5034)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.3ms | Allocations: 5760)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6132112090834568685)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6132112090834568685)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:13:28 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:13:28.676930"], ["updated_at", "2021-01-24 14:13:28.676930"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 9.1ms | Allocations: 284)
+Completed 201 Created in 65ms (Views: 12.0ms | ActiveRecord: 7.7ms | Allocations: 20699)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (15.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_development"[0m
+  [1m[35m (14.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_test"[0m
+  [1m[35m (153.4ms)[0m  [1m[35mCREATE DATABASE "find_movie_development" ENCODING = 'unicode'[0m
+  [1m[35m (73.7ms)[0m  [1m[35mCREATE DATABASE "find_movie_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6132112090834568685)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210123143216)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123143216"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFinders (20210123144035)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "finders" ("id" bigserial primary key, "release" character varying, "duration" character varying, "language" character varying, "rating" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_61bbda3fb5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_finders_on_user_id" ON "finders"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144035"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePreferences (20210123144138)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "preferences" ("id" bigserial primary key, "content" text, "finder_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fc202332d3"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+, CONSTRAINT "fk_rails_87f1c9c7bd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_finder_id" ON "preferences"  ("finder_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_user_id" ON "preferences"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144138"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddTokenToUsers (20210123150649)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" character varying(30)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123150649"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-24 14:13:50.300566"], ["updated_at", "2021-01-24 14:13:50.300566"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6132112090834568685)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:13:59 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 13ms (ActiveRecord: 4.3ms | Allocations: 4036)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "LDkYpoUXGHJAU7ukzdbj"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "pierre@pierre.pierre"], ["encrypted_password", "$2a$12$ZLzRbtTJ7.YWyQljSQbYyOoKWwMZMxOmqSoaQ8/igqDzCADha.sEu"], ["created_at", "2021-01-24 14:15:03.275715"], ["updated_at", "2021-01-24 14:15:03.275715"], ["authentication_token", "LDkYpoUXGHJAU7ukzdbj"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:15:51 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierr"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 18ms (ActiveRecord: 4.4ms | Allocations: 4036)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:16:03 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.8ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:16:03.432831"], ["updated_at", "2021-01-24 14:16:03.432831"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 281)
+Completed 201 Created in 52ms (Views: 2.4ms | ActiveRecord: 13.3ms | Allocations: 20178)
+
+
+  [1m[36mFinder Load (0.6ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (14.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_development"[0m
+  [1m[35m (17.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_test"[0m
+  [1m[35m (70.3ms)[0m  [1m[35mCREATE DATABASE "find_movie_development" ENCODING = 'unicode'[0m
+  [1m[35m (83.5ms)[0m  [1m[35mCREATE DATABASE "find_movie_test" ENCODING = 'unicode'[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6132112090834568685)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210123143216)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123143216"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFinders (20210123144035)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "finders" ("id" bigserial primary key, "release" character varying, "duration" character varying, "language" character varying[] DEFAULT '{}', "rating" character varying[] DEFAULT '{}', "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_61bbda3fb5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_finders_on_user_id" ON "finders"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144035"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePreferences (20210123144138)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "preferences" ("id" bigserial primary key, "content" text, "finder_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fc202332d3"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+, CONSTRAINT "fk_rails_87f1c9c7bd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_finder_id" ON "preferences"  ("finder_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_user_id" ON "preferences"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144138"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddTokenToUsers (20210123150649)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" character varying(30)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123150649"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-24 14:19:06.785716"], ["updated_at", "2021-01-24 14:19:06.785716"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6132112090834568685)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "fo9cPjmtzhzYkDVssSYu"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "pierre@pierre.pierre"], ["encrypted_password", "$2a$12$eH7eiWpSUFPYUgjSqaFHdeMFj.rTXpPsJH4tXxvidicbm0Io8v3tm"], ["created_at", "2021-01-24 14:19:07.047731"], ["updated_at", "2021-01-24 14:19:07.047731"], ["authentication_token", "fo9cPjmtzhzYkDVssSYu"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:21:30 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.7ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:21:30.523584"], ["updated_at", "2021-01-24 14:21:30.523584"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 290)
+Completed 201 Created in 68ms (Views: 1.4ms | ActiveRecord: 9.0ms | Allocations: 20829)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:22:24 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:22:24.718074"], ["updated_at", "2021-01-24 14:22:24.718074"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.6ms | Allocations: 183)
+Completed 201 Created in 10ms (Views: 1.7ms | ActiveRecord: 1.5ms | Allocations: 6765)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:26:57 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:26:57.801093"], ["updated_at", "2021-01-24 14:26:57.801093"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.9ms | Allocations: 183)
+Completed 201 Created in 10ms (Views: 2.4ms | ActiveRecord: 1.5ms | Allocations: 4948)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:27:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:27:15.484384"], ["updated_at", "2021-01-24 14:27:15.484384"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.4ms | Allocations: 183)
+Completed 201 Created in 21ms (Views: 3.3ms | ActiveRecord: 1.7ms | Allocations: 4948)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:27:19 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 14:27:19.385154"], ["updated_at", "2021-01-24 14:27:19.385154"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.4ms | Allocations: 101)
+Completed 201 Created in 18ms (Views: 1.8ms | ActiveRecord: 1.5ms | Allocations: 4539)
+
+
+  [1m[36mFinder Load (0.6ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:30:58 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{\"\"}"], ["user_id", 1], ["created_at", "2021-01-24 14:30:58.328860"], ["updated_at", "2021-01-24 14:30:58.328860"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 108)
+Completed 201 Created in 21ms (Views: 0.6ms | ActiveRecord: 1.8ms | Allocations: 4578)
+
+
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:31:56 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.9ms | Allocations: 9357)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/controllers/api/v1/finders_controller.rb:50:in `[]'
+app/controllers/api/v1/finders_controller.rb:50:in `finder_params'
+app/controllers/api/v1/finders_controller.rb:23:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:32:07 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 2106)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/controllers/api/v1/finders_controller.rb:50:in `[]'
+app/controllers/api/v1/finders_controller.rb:50:in `finder_params'
+app/controllers/api/v1/finders_controller.rb:23:in `create'
+  [1m[36mFinder Load (0.5ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  [1m[36mFinder Load (0.5ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:34:31 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+...:duration, :release, language :[], rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+...ease, language :[], rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:34:52 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+...duration, :release, :language :[], :rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:35:05 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+...elease, :language [], :rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:35:30 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+...:duration, :release, language :[], rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+...ease, language :[], rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:37:10 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+...:duration, :release, language :{}, rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+...ease, language :{}, rating :[])
+...                              ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/controllers/api/v1/finders_controller.rb:50: syntax error, unexpected ')', expecting end
+app/controllers/api/v1/finders_controller.rb:59: syntax error, unexpected end-of-input, expecting end
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"5d", "d9"} ,
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:37:57 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"5d", "d9"} ,
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"5d", "d9"} ,
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"5d", "d9"} ,
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:38:04 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{5d,d9}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 14:38:04.574895"], ["updated_at", "2021-01-24 14:38:04.574895"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.5ms | Allocations: 2131)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 8.3ms | Allocations: 22133)
+
+
+  
+ActionView::Template::Error (undefined method `to_a' for "5":String
+Did you mean?  to_r
+               to_f
+               to_i
+               to_s
+               to_c
+               to_d):
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.rating @finder.rating do |item|
+    7:   json.array! item
+    8: end
+    9: 
+   10: 
+  
+app/views/api/v1/finders/show.json.jbuilder:7
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:28:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:38:16 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{5d,d9}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 14:38:16.091170"], ["updated_at", "2021-01-24 14:38:16.091170"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 194)
+Completed 201 Created in 11ms (Views: 1.3ms | ActiveRecord: 1.6ms | Allocations: 5042)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:38:34 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{5d,d9}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 14:38:34.257496"], ["updated_at", "2021-01-24 14:38:34.257496"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 318)
+Completed 201 Created in 63ms (Views: 10.6ms | ActiveRecord: 5.8ms | Allocations: 20909)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 14:39:59 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-24 14:39:59.541150"], ["updated_at", "2021-01-24 14:39:59.541150"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 191)
+Completed 201 Created in 9ms (Views: 1.0ms | ActiveRecord: 1.7ms | Allocations: 6734)
+
+

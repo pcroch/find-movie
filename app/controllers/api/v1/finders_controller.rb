@@ -47,7 +47,7 @@ class Api::V1::FindersController < Api::V1::BaseController
 
 
   def finder_params
-    params.require(:finder).permit(:duration, :release, :language, :rating)
+    params.require(:finder).permit(:duration, :release, language: [], rating: [])
   end
 
   def render_error

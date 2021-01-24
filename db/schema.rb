@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2021_01_23_150649) do
   create_table "finders", force: :cascade do |t|
     t.string "release"
     t.string "duration"
-    t.string "language"
-    t.string "rating"
+    t.string "language", default: [], array: true
+    t.string "rating", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
