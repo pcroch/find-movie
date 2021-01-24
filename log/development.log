@@ -182,3 +182,2289 @@ Migrating to AddTokenToUsers (20210123150649)
   [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/api/v1/finders/1" for ::1 at 2021-01-23 15:41:45 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/finders/1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/finders/1" for ::1 at 2021-01-23 15:42:09 +0000
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/finders/1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:42:18 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"New restaurant", "duration"=>"Paris"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.8ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "New restaurant"], ["duration", "Paris"], ["user_id", 1], ["created_at", "2021-01-23 15:42:18.913694"], ["updated_at", "2021-01-23 15:42:18.913694"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 104)
+Completed 201 Created in 46ms (Views: 1.6ms | ActiveRecord: 5.8ms | Allocations: 21738)
+
+
+Started GET "/api/v1/products" for ::1 at 2021-01-23 15:42:38 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/products"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:43:59 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008", "duration"=>"120", "language"=>"French", "rating"=>"5"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2008"], ["duration", "120"], ["language", "French"], ["rating", "5"], ["user_id", 1], ["created_at", "2021-01-23 15:43:59.103619"], ["updated_at", "2021-01-23 15:43:59.103619"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 5.7ms | Allocations: 2684)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms | Allocations: 7426)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fa003d1c0>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:45:02 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008", "duration"=>"120"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2008"], ["duration", "120"], ["user_id", 1], ["created_at", "2021-01-23 15:45:02.026292"], ["updated_at", "2021-01-23 15:45:02.026292"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 6.2ms | Allocations: 2567)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.2ms | Allocations: 6929)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fa80ca4c8>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:45:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"duration"=>"120"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["duration", "120"], ["user_id", 1], ["created_at", "2021-01-23 15:45:09.650637"], ["updated_at", "2021-01-23 15:45:09.650637"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 3.9ms | Allocations: 2566)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms | Allocations: 6908)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00005601def44788>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:45:24 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:45:24.579899"], ["updated_at", "2021-01-23 15:45:24.579899"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 6.9ms | Allocations: 2565)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.5ms | Allocations: 6902)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fa020b3a8>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started GET "/api/v1/finders/1" for ::1 at 2021-01-23 15:45:52 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `set_finder'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 5.9ms | Allocations: 2586)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 3710)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fa839e668>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+Started GET "/api/v1/finders/1" for ::1 at 2021-01-23 15:46:41 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1", "finder"=>{}}
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `set_finder'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 4.9ms | Allocations: 2587)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 3584)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fa814aa38>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+Started GET "/api/v1/finders" for ::1 at 2021-01-23 15:46:49 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.1ms | Allocations: 963)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 1524)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:47:27 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:47:27.265052"], ["updated_at", "2021-01-23 15:47:27.265052"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 5.2ms | Allocations: 2565)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.3ms | Allocations: 6903)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00007f9fbc3c0100>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase, :language, :rating
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:47:51 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:47:51.586020"], ["updated_at", "2021-01-23 15:47:51.586020"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 102)
+Completed 201 Created in 6ms (Views: 0.8ms | ActiveRecord: 1.1ms | Allocations: 4765)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:48:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:48:09.694244"], ["updated_at", "2021-01-23 15:48:09.694244"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 5.1ms | Allocations: 2627)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.6ms | Allocations: 7262)
+
+
+  
+ActionView::Template::Error (undefined method `relase' for #<Finder:0x00005601df412328>
+Did you mean?  release
+               release=
+               release?):
+    1: json.extract! @finder, :id, :duration,:relase
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:48:22 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:48:22.864665"], ["updated_at", "2021-01-23 15:48:22.864665"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 122)
+Completed 201 Created in 7ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 4785)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:48:38 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:48:38.302467"], ["updated_at", "2021-01-23 15:48:38.302467"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 981)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.2ms | Allocations: 5623)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check json.extract! @finder, :id, :duration, :language, :rating, ,:release
+# json.comments @finder.preference do |pref|
+#   json.extract! comment, :id, :content
+# end
+
+):
+1:    json.extract! @finder, :id, :duration, :language, :rating, ,:release
+2:    # json.comments @finder.preference do |pref|
+3:    #   json.extract! comment, :id, :content
+4:    # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/views/api/v1/finders/show.json.jbuilder:1: syntax error, unexpected ','
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:48:59 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:48:59.898134"], ["updated_at", "2021-01-23 15:48:59.898134"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 136)
+Completed 201 Created in 8ms (Views: 1.1ms | ActiveRecord: 1.1ms | Allocations: 4799)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:50:47 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2008"
+        "duration": "120"
+        "language": "French"
+        "rating": "5"
+                        } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2008"
+        "duration": "120"
+        "language": "French"
+        "rating": "5"
+                        } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2008"
+        "duration": "120"
+        "language": "French"
+        "rating": "5"
+                        } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:51:00 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["release", "2008"], ["user_id", 1], ["created_at", "2021-01-23 15:51:00.064913"], ["updated_at", "2021-01-23 15:51:00.064913"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 73)
+Completed 201 Created in 8ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 4433)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:51:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008", "duration"=>"120", "language"=>"French", "rating"=>"5"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2008"], ["duration", "120"], ["language", "French"], ["rating", "5"], ["user_id", 1], ["created_at", "2021-01-23 15:51:15.343840"], ["updated_at", "2021-01-23 15:51:15.343840"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 91)
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 4521)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:53:45 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "240",
+        "language": ["French", "English"]
+        "rating": ["5", "9"]
+                        } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "240",
+        "language": ["French", "English"]
+        "rating": ["5", "9"]
+                        } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "240",
+        "language": ["French", "English"]
+        "rating": ["5", "9"]
+                        } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 15:53:59 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"240", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "240"], ["user_id", 1], ["created_at", "2021-01-23 15:53:59.612390"], ["updated_at", "2021-01-23 15:53:59.612390"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 79)
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 4517)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:00:02 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:00:02.156958"], ["updated_at", "2021-01-23 16:00:02.156958"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.2ms | Allocations: 2553)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.8ms | Allocations: 7388)
+
+
+  
+ActionView::Template::Error (undefined method `map' for #<Finder:0x00005601dd6fd058>
+Did you mean?  tap):
+    1: json.array! @finder, :id, :duration, :language, :rating, :release
+    2: # json.comments @finder.preference do |pref|
+    3: #   json.extract! comment, :id, :content
+    4: # end
+  
+app/views/api/v1/finders/show.json.jbuilder:1
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:11:35 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:11:35.024746"], ["updated_at", "2021-01-23 16:11:35.024746"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.6ms | Allocations: 984)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.0ms | Allocations: 5819)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check json.extract! @finder, :id, :duration, :language, :rating, :release
+# json.comments @finder.preference do |pref|
+#   json.extract! comment, :id, :content
+
+json.language.array! @finder do |item|
+  json.extract! item, language
+# end
+
+):
+1:    json.extract! @finder, :id, :duration, :language, :rating, :release
+2:    # json.comments @finder.preference do |pref|
+3:    #   json.extract! comment, :id, :content
+4:    
+5:    json.language.array! @finder do |item|
+6:      json.extract! item, language
+7:    # end
+  
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/views/api/v1/finders/show.json.jbuilder:10: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:11:56 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:11:56.929420"], ["updated_at", "2021-01-23 16:11:56.929420"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 984)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.3ms | Allocations: 5707)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check json.extract! @finder, :id, :duration, :language, :rating, :release
+# json.comments @finder.preference do |pref|
+#   json.extract! comment, :id, :content
+
+json.language. @finder do |item|
+  json.extract! item, language
+# end
+
+):
+1:    json.extract! @finder, :id, :duration, :language, :rating, :release
+2:    # json.comments @finder.preference do |pref|
+3:    #   json.extract! comment, :id, :content
+4:    
+5:    json.language. @finder do |item|
+6:      json.extract! item, language
+7:    # end
+  
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:12:07 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:12:07.499174"], ["updated_at", "2021-01-23 16:12:07.499174"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 984)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.9ms | Allocations: 5699)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check json.extract! @finder, :id, :duration, :language, :rating, :release
+# json.comments @finder.preference do |pref|
+#   json.extract! comment, :id, :content
+
+json.language. @finder do |item|
+  json.extract! item, language
+end
+
+):
+1:    json.extract! @finder, :id, :duration, :language, :rating, :release
+2:    # json.comments @finder.preference do |pref|
+3:    #   json.extract! comment, :id, :content
+4:    
+5:    json.language. @finder do |item|
+6:      json.extract! item, language
+7:    end
+  
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:5: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected '\n', expecting '='
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:13:07 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:13:07.728789"], ["updated_at", "2021-01-23 16:13:07.728789"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.4ms | Allocations: 1353)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.7ms | Allocations: 6069)
+
+
+  
+ActionView::Template::Error (undefined method `array!' for nil:NilClass):
+     8: 
+     9: 
+    10: 
+    11: json.language.array! @finder
+  
+app/views/api/v1/finders/show.json.jbuilder:11
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:14:06 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:14:06.082491"], ["updated_at", "2021-01-23 16:14:06.082491"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 274)
+Completed 201 Created in 6ms (Views: 0.9ms | ActiveRecord: 1.4ms | Allocations: 5011)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:14:26 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:14:26.758685"], ["updated_at", "2021-01-23 16:14:26.758685"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.6ms | Allocations: 997)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.4ms | Allocations: 5706)
+
+
+  
+ActionView::Template::Error (Can't merge [] into {"id"=>21, "duration"=>"320", "language"=>nil, "rating"=>nil, "release"=>"2012"}):
+     8: 
+     9: 
+    10: 
+    11: json.array! @finder.language
+  
+app/views/api/v1/finders/show.json.jbuilder:11
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:14:40 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:14:40.123126"], ["updated_at", "2021-01-23 16:14:40.123126"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 928)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.5ms | Allocations: 5343)
+
+
+  
+ActionView::Template::Error (Can't merge [] into {"id"=>22, "duration"=>"320", "language"=>nil, "rating"=>nil, "release"=>"2012"}):
+     8: 
+     9: 
+    10: 
+    11: json.array! @finder.language
+  
+app/views/api/v1/finders/show.json.jbuilder:11
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:14:44 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:14:44.621384"], ["updated_at", "2021-01-23 16:14:44.621384"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 928)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.5ms | Allocations: 5338)
+
+
+  
+ActionView::Template::Error (Can't merge [] into {"id"=>23, "duration"=>"320", "language"=>nil, "rating"=>nil, "release"=>"2012"}):
+     8: 
+     9: 
+    10: 
+    11: json.array! @finder.language
+  
+app/views/api/v1/finders/show.json.jbuilder:11
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:15:01 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:15:01.299829"], ["updated_at", "2021-01-23 16:15:01.299829"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.5ms | Allocations: 1353)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.4ms | Allocations: 6067)
+
+
+  
+ActionView::Template::Error (undefined method `array!' for nil:NilClass):
+     8: 
+     9: 
+    10: 
+    11: json.language.array! @finder
+  
+app/views/api/v1/finders/show.json.jbuilder:11
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:15:18 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:15:18.287784"], ["updated_at", "2021-01-23 16:15:18.287784"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 262)
+Completed 201 Created in 6ms (Views: 0.9ms | ActiveRecord: 1.2ms | Allocations: 4999)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:15:28 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["French", "English"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:15:28.163050"], ["updated_at", "2021-01-23 16:15:28.163050"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 152)
+Completed 201 Created in 9ms (Views: 1.2ms | ActiveRecord: 1.3ms | Allocations: 4884)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:44:25 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"French", "English"},
+        "rating": ["5", "9"]
+                        } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"French", "English"},
+        "rating": ["5", "9"]
+                        } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {"French", "English"},
+        "rating": ["5", "9"]
+                        } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:45:00 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.8ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:45:00.028271"], ["updated_at", "2021-01-23 16:45:00.028271"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 83)
+Completed 201 Created in 8ms (Views: 0.5ms | ActiveRecord: 2.4ms | Allocations: 4651)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:46:21 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:46:21.412907"], ["updated_at", "2021-01-23 16:46:21.412907"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 148)
+Completed 201 Created in 8ms (Views: 1.1ms | ActiveRecord: 2.2ms | Allocations: 4897)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:49:51 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:49:51.042118"], ["updated_at", "2021-01-23 16:49:51.042118"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 79)
+Completed 201 Created in 8ms (Views: 0.7ms | ActiveRecord: 1.5ms | Allocations: 4525)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:51:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:51:55.828861"], ["updated_at", "2021-01-23 16:51:55.828861"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 157)
+Completed 201 Created in 6ms (Views: 0.8ms | ActiveRecord: 1.8ms | Allocations: 4905)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:52:53 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": ["lang1":"French", "lang2": "English"],
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at ':"French", "lang2": "English"],
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": ["lang1":"French", "lang2": "English"],
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:53:03 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-23 16:53:03.566600"], ["updated_at", "2021-01-23 16:53:03.566600"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 85)
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 4.7ms | Allocations: 4535)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-23 16:54:07 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"French", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "French"], ["user_id", 1], ["created_at", "2021-01-23 16:54:07.094997"], ["updated_at", "2021-01-23 16:54:07.094997"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 91)
+Completed 201 Created in 9ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 4539)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:21:42 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>{"lang1"=>"French", "lang2"=>"English"}, "rating"=>["5", "9"]}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (2.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:21:42.593316"], ["updated_at", "2021-01-24 13:21:42.593316"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 284)
+Completed 201 Created in 88ms (Views: 19.4ms | ActiveRecord: 11.3ms | Allocations: 20715)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:22:33 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>[{"lang1"=>"French", "lang2"=>"English"}], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:22:33.337010"], ["updated_at", "2021-01-24 13:22:33.337010"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 157)
+Completed 201 Created in 7ms (Views: 1.1ms | ActiveRecord: 1.7ms | Allocations: 6367)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:27:02 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "French" "English",
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "French" "English",
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "French" "English",
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:27:19 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"English", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "English"], ["user_id", 1], ["created_at", "2021-01-24 13:27:19.324191"], ["updated_at", "2021-01-24 13:27:19.324191"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 92)
+Completed 201 Created in 7ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 4576)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:30:39 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:30:39.819596"], ["updated_at", "2021-01-24 13:30:39.819596"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 85)
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 4514)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:31:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:31:15.996164"], ["updated_at", "2021-01-24 13:31:15.996164"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 991)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.4ms | Allocations: 5708)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check p  json
+json.extract! @finder, :id, :duration, :language, :rating, :release
+# json.comments @finder.preference do |pref|
+#   json.extract! comment, :id, :content
+
+json.language. @finder do |item|
+  json.extract! item, language
+end
+
+
+
+# json.language @finder.language
+# json.array!
+
+):
+1:    p  json
+2:    json.extract! @finder, :id, :duration, :language, :rating, :release
+3:    # json.comments @finder.preference do |pref|
+4:    #   json.extract! comment, :id, :content
+5:    
+6:    json.language. @finder do |item|
+7:      json.extract! item, language
+8:    end
+9:    
+10:    
+11:    
+12:    # json.language @finder.language
+13:    # json.array!
+  
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/views/api/v1/finders/show.json.jbuilder:6: syntax error, unexpected tIVAR
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected tIDENTIFIER, expecting end
+app/views/api/v1/finders/show.json.jbuilder:7: syntax error, unexpected '\n', expecting '='
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:31:42 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:31:42.966021"], ["updated_at", "2021-01-24 13:31:42.966021"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 220.1ms | Allocations: 174485)
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 2.2ms | Allocations: 179224)
+
+
+  
+ActionView::Template::Error (undefined method `json' for #<#<Class:0x00005630fac74f58>:0x00005630fac9c788>
+Did you mean?  JSON):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json @finder.language do |item|
+    7:   json.extract! item, language
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:31:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:31:54.586501"], ["updated_at", "2021-01-24 13:31:54.586501"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 167)
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.2ms | Allocations: 4905)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:32:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:32:09.641025"], ["updated_at", "2021-01-24 13:32:09.641025"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 1018)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.2ms | Allocations: 5732)
+
+
+  
+ActionView::Template::Error (Can't merge [] into {"id"=>40, "duration"=>"320", "language"=>nil, "rating"=>nil, "release"=>"2012"}):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.array! @finder.language do |item|
+    7:   json.extract! item, language
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:32:19 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:32:19.898552"], ["updated_at", "2021-01-24 13:32:19.898552"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 161)
+Completed 201 Created in 8ms (Views: 1.0ms | ActiveRecord: 1.7ms | Allocations: 4924)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:32:26 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:32:27.003578"], ["updated_at", "2021-01-24 13:32:27.003578"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.7ms | Allocations: 1009)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.4ms | Allocations: 5718)
+
+
+  
+ActionView::Template::Error (Can't merge [] into {"id"=>42, "duration"=>"320", "language"=>nil, "rating"=>nil, "release"=>"2012"}):
+    10: 
+    11: 
+    12: json.language @finder.language
+    13: json.array!
+  
+app/views/api/v1/finders/show.json.jbuilder:13
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:32:49 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:32:49.354951"], ["updated_at", "2021-01-24 13:32:49.354951"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 176)
+Completed 201 Created in 6ms (Views: 1.1ms | ActiveRecord: 1.3ms | Allocations: 4913)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:33:03 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:33:03.619625"], ["updated_at", "2021-01-24 13:33:03.619625"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.3ms | Allocations: 1368)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.1ms | Allocations: 6077)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder.language.each do |item|
+    7:   json.extract! item, language
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:33:13 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:33:13.344833"], ["updated_at", "2021-01-24 13:33:13.344833"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.1ms | Allocations: 2622)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.5ms | Allocations: 7336)
+
+
+  
+ActionView::Template::Error (undefined method `map' for #<Finder:0x00007f80e4746050>
+Did you mean?  tap):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder do |item|
+    7:   json.extract! item, language
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:33:22 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:33:22.842138"], ["updated_at", "2021-01-24 13:33:22.842138"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 176)
+Completed 201 Created in 8ms (Views: 1.3ms | ActiveRecord: 1.3ms | Allocations: 4913)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:37:11 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:37:11.051897"], ["updated_at", "2021-01-24 13:37:11.051897"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 176)
+Completed 201 Created in 8ms (Views: 1.2ms | ActiveRecord: 1.8ms | Allocations: 4908)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:37:20 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:37:20.447452"], ["updated_at", "2021-01-24 13:37:20.447452"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 176)
+Completed 201 Created in 11ms (Views: 1.4ms | ActiveRecord: 1.5ms | Allocations: 4908)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:37:45 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:37:45.383667"], ["updated_at", "2021-01-24 13:37:45.383667"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:25:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.2ms | Allocations: 2586)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.2ms | Allocations: 7295)
+
+
+  
+ActionView::Template::Error (undefined method `map' for #<Finder:0x00007f80e4739ad0>
+Did you mean?  tap):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder do |item|
+    7:   json.array! item
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:26:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:48:48 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:51:28 +0000
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.7ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:51:31.463362"], ["updated_at", "2021-01-24 13:51:31.463362"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 181)
+Completed 201 Created in 163421ms (Views: 1.4ms | ActiveRecord: 8.5ms | Allocations: 406260)
+
+
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d", "d9"] } ,
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d", "d9"] } ,
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d", "d9"] } ,
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:52:56 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:53:03 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": {["5d"] ,
+        "rating": ["5", "9"] } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:53:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"5d", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.7ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "5d"], ["user_id", 1], ["created_at", "2021-01-24 13:53:34.945141"], ["updated_at", "2021-01-24 13:53:34.945141"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 4.4ms | Allocations: 1896)
+Completed 500 Internal Server Error in 2932ms (ActiveRecord: 4.6ms | Allocations: 431938)
+
+
+  
+ActionView::Template::Error (undefined method `map' for "5d":String
+Did you mean?  tap):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder.language do |item|
+    7:   json.array! item
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:28:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:54:06 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>["5d", "d9"], "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :language, :rating[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:54:41 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:54:58 +0000
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.8ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "[5d, d9]"], ["user_id", 1], ["created_at", "2021-01-24 13:55:04.210834"], ["updated_at", "2021-01-24 13:55:04.210834"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 4.5ms | Allocations: 1792)
+Completed 500 Internal Server Error in 23099ms (ActiveRecord: 9.5ms | Allocations: 905480)
+
+
+  
+ActionView::Template::Error (undefined method `map' for "[5d, d9]":String
+Did you mean?  tap):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder.language do |item|
+    7:   json.array! item
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:28:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:55:06.298118"], ["updated_at", "2021-01-24 13:55:06.298118"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.3ms | Allocations: 99)
+Completed 201 Created in 59788ms (Views: 0.8ms | ActiveRecord: 8.1ms | Allocations: 2147656)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["user_id", 1], ["created_at", "2021-01-24 13:55:08.002448"], ["updated_at", "2021-01-24 13:55:08.002448"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 96)
+Completed 201 Created in 118131ms (Views: 0.6ms | ActiveRecord: 14.4ms | Allocations: 3736517)
+
+
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "[5d, d9]"], ["user_id", 1], ["created_at", "2021-01-24 13:55:08.105778"], ["updated_at", "2021-01-24 13:55:08.105778"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.1ms | Allocations: 1797)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 8.0ms | Allocations: 19673)
+
+
+  
+ActionView::Template::Error (undefined method `map' for "[5d, d9]":String
+Did you mean?  tap):
+    3: # json.comments @finder.preference do |pref|
+    4: #   json.extract! comment, :id, :content
+    5: 
+    6: json.language @finder.language do |item|
+    7:   json.array! item
+    8: end
+    9: 
+  
+app/views/api/v1/finders/show.json.jbuilder:6
+app/controllers/api/v1/finders_controller.rb:28:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:55:23 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :rating[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "[5d, d9]"], ["user_id", 1], ["created_at", "2021-01-24 13:55:23.118771"], ["updated_at", "2021-01-24 13:55:23.118771"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 290)
+Completed 201 Created in 54ms (Views: 11.2ms | ActiveRecord: 7.5ms | Allocations: 20726)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:55:44 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "[5d, d9]" ,
+        "rating": "["5", "9"]" } }
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "[5d, d9]" ,
+        "rating": "["5", "9"]" } }'):
+  
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.4) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{ "finder": { 
+        "release": "2012",
+        "duration": "320",
+        "language": "[5d, d9]" ,
+        "rating": "["5", "9"]" } }
+Started POST "/api/v1/finders" for ::1 at 2021-01-24 13:56:12 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2012", "duration"=>"320", "language"=>"[5d, d9]", "rating"=>"['5', '9']"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "seb@lewagon.org"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "320"], ["language", "[5d, d9]"], ["rating", "['5', '9']"], ["user_id", 1], ["created_at", "2021-01-24 13:56:12.095400"], ["updated_at", "2021-01-24 13:56:12.095400"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:27:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 168)
+Completed 201 Created in 10ms (Views: 1.8ms | ActiveRecord: 1.3ms | Allocations: 4912)
+
+

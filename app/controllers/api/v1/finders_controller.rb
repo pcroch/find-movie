@@ -1,3 +1,4 @@
+require 'pry'
 class Api::V1::FindersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
   before_action :set_finder, only: [ :show, :update, :destroy ]
@@ -20,6 +21,7 @@ class Api::V1::FindersController < Api::V1::BaseController
 
   def create
     @finder = Finder.new(finder_params)
+# binding.pry
     @finder.user = current_user
     authorize @finder
     if @finder.save
@@ -44,8 +46,8 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
 
-def finder_params
-    params.require(:finder).permit(:duration, :release)
+  def finder_params
+    params.require(:finder).permit(:duration, :release, :language, :rating)
   end
 
   def render_error
