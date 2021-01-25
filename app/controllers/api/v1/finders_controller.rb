@@ -28,18 +28,23 @@ class Api::V1::FindersController < Api::V1::BaseController
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
     find_country(@min_release, @min_duration, @min_rating, @max_rating)
-binding.pry
+
     @finder = Finder.new({"release"=> @min_release,
                           "duration"=>@min_duration,
                           "language"=>["French", @movie_title],
-                          "rating"=>[@min_rating, @max_rating]})
-                          # "title"=> @movie_title,
-                          # "overview"=> @movie_overview,
-                          # "vote_average"=> @movie_vote_average })
+                          "rating"=>[@min_rating, @max_rating] })
+
+
 
     @finder.user = current_user
     authorize @finder
     if @finder.save
+             @movie = Movie.new({"finder_id" => @finder.id,
+                          "title"=> @movie_title,
+                          "overview"=> @movie_overview,
+                          "vote_average"=> @movie_vote_average })
+      # binding.pry
+      @movie.save
       render :show, status: :created
     else
       render_error
