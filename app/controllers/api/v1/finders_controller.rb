@@ -20,19 +20,21 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
-    # binding.pry
-    a = finder_params[:duration].first.to_i
-    # b = finder_params[:release].first.to_i
-    find_country(a)
-    # countries = find_country(finder_params)
-    # take the params
-
-
-    # fetch the api movie
-
-    # create the object finder with the result
-    @finder = Finder.new({"release"=>"2012", "duration"=>@aa, "language"=>["French", "English"], "rating"=>["5", "9"]})
+    @min_release = finder_params[:release][0..3].to_i
+    @min_duration = finder_params[:duration].to_i
+    @vote_count = 2500
+    @min_rating = finder_params[:rating].first.to_i
+    @max_rating = finder_params[:rating][1].to_i
+    find_country(@min_release, @min_duration, @min_rating, @max_rating)
 # binding.pry
+    @finder = Finder.new({"release"=> @min_release,
+                          "duration"=>@min_duration,
+                          "language"=>["French", @movie_title],
+                          "rating"=>[@min_rating, @max_rating],
+                          "title"=> @movie_title,
+                          "overview"=> @movie_overview,
+                          "vote_average"=> @movie_vote_average })
+
     @finder.user = current_user
     authorize @finder
     if @finder.save
@@ -68,21 +70,23 @@ class Api::V1::FindersController < Api::V1::BaseController
 
   def request_api(url)
     response = Excon.get(
-      url,
-      headers: {
-        # 'X-RapidAPI-Host' => URI.parse(url).host,
-        # 'X-RapidAPI-Key' => ENV.fetch('RAPIDAPI_API_KEY')
-      }
-    )
+      url)
     return nil if response.status != 200
     # binding.pry
-    p JSON.parse(response.body)
-    @aa = JSON.parse(response.body)["status"]
+    # p @bb = JSON.parse(response.body)
+    @movie_title = JSON.parse(response.body)["results"][0]["original_title"]
+    @movie_overview = JSON.parse(response.body)["results"][0]["overview"]
+    @movie_vote_average = JSON.parse(response.body)["results"][0]["vote_average"]
+    # @movie_title = JSON.parse(response.body)["results"][0]["original_title"]
+
 
   end
-  def find_country(rel)
+  def find_country(minrel, mindur, minrat, maxrat)
+    key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
     request_api(
-      "https://bomus-malus.herokuapp.com/api/v4/scores?sinister[]=#{rel}&years[]=1&pro[]=1"
+      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&include_adult=false&include_video=false&page=1&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel}&vote_count.gte=2500&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}"
     )
   end
 end
+
+

@@ -3320,3 +3320,700 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 201 Created in 262ms (Views: 1.5ms | ActiveRecord: 4.8ms | Excon: 182.2ms | Allocations: 27715)
 
 
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:07:37 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+    VOTE_COUNT = 2500
+    ^~~~~~~~~~):
+  
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:07:53 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2018", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:10:36 +0000
+Completed 500 Internal Server Error in 169168ms (ActiveRecord: 6.1ms | Allocations: 1409932)
+
+
+  
+NameError (undefined local variable or method `a' for #<Api::V1::FindersController:0x00007fdaa4433b28>):
+  
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+    VOTECOUNT = 2500
+    ^~~~~~~~~):
+  
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+app/controllers/api/v1/finders_controller.rb:26: dynamic constant assignment
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:25:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (103.32ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb%20%20%20%20%20%20&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m401 Unauthorized (103 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (2.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:25:31.930088"], ["updated_at", "2021-01-25 11:25:31.930088"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 201)
+Completed 201 Created in 292ms (Views: 1.5ms | ActiveRecord: 9.1ms | Excon: 103.3ms | Allocations: 28832)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:26:33 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (98.20ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:26:34.132984"], ["updated_at", "2021-01-25 11:26:34.132984"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 118)
+Completed 201 Created in 308ms (Views: 0.7ms | ActiveRecord: 5.9ms | Excon: 98.2ms | Allocations: 30249)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:27:06 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (102.09ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:27:07.101099"], ["updated_at", "2021-01-25 11:27:07.101099"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 117)
+Completed 201 Created in 195ms (Views: 0.9ms | ActiveRecord: 6.3ms | Excon: 102.1ms | Allocations: 29544)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:27:19 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (75.51ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:28:21.850345"], ["updated_at", "2021-01-25 11:28:21.850345"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 117)
+Completed 201 Created in 62285ms (Views: 0.8ms | ActiveRecord: 13.1ms | Excon: 75.5ms | Allocations: 249034)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:28:27 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (105.44ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:28:41.174702"], ["updated_at", "2021-01-25 11:28:41.174702"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 311)
+Completed 201 Created in 13319ms (Views: 1.6ms | ActiveRecord: 15.5ms | Excon: 105.5ms | Allocations: 255784)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:28:46 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (66.78ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2012"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:31:35.777959"], ["updated_at", "2021-01-25 11:31:35.777959"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.6ms | Allocations: 311)
+Completed 201 Created in 169136ms (Views: 2.6ms | ActiveRecord: 14.3ms | Excon: 66.8ms | Allocations: 452846)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:31:46 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (100.06ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "Wonder Woman 1984"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:31:46.987743"], ["updated_at", "2021-01-25 11:31:46.987743"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 317)
+Completed 201 Created in 207ms (Views: 3.6ms | ActiveRecord: 7.6ms | Excon: 100.1ms | Allocations: 33042)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:33:01 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (352.75ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2012"], ["duration", "Wonder Woman 1984"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:33:02.062544"], ["updated_at", "2021-01-25 11:33:02.062544"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:42:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.4ms | Allocations: 196)
+Completed 201 Created in 434ms (Views: 1.3ms | ActiveRecord: 5.7ms | Excon: 352.8ms | Allocations: 30343)
+
+
+Started GET "/api/v1/finders" for ::1 at 2021-01-25 11:37:49 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 8.5ms | Allocations: 9104)
+Completed 200 OK in 12ms (Views: 6.0ms | ActiveRecord: 3.0ms | Allocations: 10514)
+
+
+Started GET "/api/v1/finders" for ::1 at 2021-01-25 11:39:46 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  ↳ app/views/api/v1/finders/index.json.jbuilder:1
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 19.1ms | Allocations: 9034)
+Completed 200 OK in 21ms (Views: 16.3ms | ActiveRecord: 3.3ms | Allocations: 10296)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:39:52 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 146ms (ActiveRecord: 2.4ms | Allocations: 124064)
+
+
+  
+NameError (undefined local variable or method `min_release' for #<Api::V1::FindersController:0x000055e2cb8c19b0>
+Did you mean?  @min_release):
+  
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:41:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (96.56ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2"], ["duration", "2"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:41:10.243695"], ["updated_at", "2021-01-25 11:41:10.243695"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 123)
+Completed 201 Created in 309ms (Views: 0.9ms | ActiveRecord: 7.1ms | Excon: 96.6ms | Allocations: 28441)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:41:49 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (74.30ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2"], ["duration", "2"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:41:49.819761"], ["updated_at", "2021-01-25 11:41:49.819761"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 123)
+Completed 201 Created in 162ms (Views: 0.9ms | ActiveRecord: 5.1ms | Excon: 74.3ms | Allocations: 26038)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:42:26 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (112.37ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=2&primary_release_date.gte=2&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2"], ["duration", "2"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:46:58.456210"], ["updated_at", "2021-01-25 11:46:58.456210"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 123)
+Completed 201 Created in 272226ms (Views: 1.0ms | ActiveRecord: 13.4ms | Excon: 112.4ms | Allocations: 1379870)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:47:15 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (109.99ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=003-&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 369ms (ActiveRecord: 4.8ms | Excon: 110.0ms | Allocations: 19856)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:49:45 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (96.49ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=003-&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 167ms (ActiveRecord: 1.7ms | Excon: 96.5ms | Allocations: 16960)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:50:05 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (133.75ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=003-&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 3.9ms | Excon: 133.8ms | Allocations: 20059)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:50:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (92.77ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=003-&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.43ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 105775ms (ActiveRecord: 1.8ms | Excon: 93.2ms | Allocations: 1523985)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:52:10 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (67.38ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,English}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:52:11.308510"], ["updated_at", "2021-01-25 11:52:11.308510"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 317)
+Completed 201 Created in 286ms (Views: 2.0ms | ActiveRecord: 7.8ms | Excon: 67.4ms | Allocations: 33171)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:52:42 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (105.11ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:52:42.646910"], ["updated_at", "2021-01-25 11:52:42.646910"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 196)
+Completed 201 Created in 189ms (Views: 1.4ms | ActiveRecord: 6.6ms | Excon: 105.1ms | Allocations: 25566)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:52:50 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"60", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (79.49ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=60&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.8 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "60"], ["language", "{French,\"Wonder Woman 1984\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:52:50.457210"], ["updated_at", "2021-01-25 11:52:50.457210"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.1ms | Allocations: 120)
+Completed 201 Created in 269ms (Views: 0.4ms | ActiveRecord: 1.5ms | Excon: 79.5ms | Allocations: 14823)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:52:59 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"400", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (73.54ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=400&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 278ms (ActiveRecord: 0.3ms | Excon: 73.6ms | Allocations: 9640)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:53:09 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"250", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (76.01ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=250&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (1.22 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "250"], ["language", "{French,\"The Lord of the Rings: The Return of the King\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:53:09.833591"], ["updated_at", "2021-01-25 11:53:09.833591"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 120)
+Completed 201 Created in 255ms (Views: 0.6ms | ActiveRecord: 2.3ms | Excon: 76.0ms | Allocations: 12280)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:53:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"350", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (72.96ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=350&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 0.3ms | Excon: 73.0ms | Allocations: 9646)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/finders_controller.rb:82:in `request_api'
+app/controllers/api/v1/finders_controller.rb:88:in `find_country'
+app/controllers/api/v1/finders_controller.rb:30:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 11:53:19 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (76.03ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 11:53:19.872512"], ["updated_at", "2021-01-25 11:53:19.872512"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:45:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 119)
+Completed 201 Created in 134ms (Views: 0.6ms | ActiveRecord: 1.6ms | Excon: 76.0ms | Allocations: 13644)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:00:16 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (98.21ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 12:00:16.881081"], ["updated_at", "2021-01-25 12:00:16.881081"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 123)
+Completed 201 Created in 169ms (Views: 0.9ms | ActiveRecord: 1.9ms | Excon: 98.2ms | Allocations: 26486)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (17.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_development"[0m
+  [1m[35m (15.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_test"[0m
+  [1m[35m (191.0ms)[0m  [1m[35mCREATE DATABASE "find_movie_development" ENCODING = 'unicode'[0m
+  [1m[35m (75.1ms)[0m  [1m[35mCREATE DATABASE "find_movie_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6132112090834568685)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210123143216)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "user_name" character varying, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123143216"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFinders (20210123144035)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "finders" ("id" bigserial primary key, "release" character varying, "duration" character varying, "language" character varying[] DEFAULT '{}', "rating" character varying[] DEFAULT '{}', "title" character varying, "overview" text, "vote_average" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_61bbda3fb5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_finders_on_user_id" ON "finders"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144035"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePreferences (20210123144138)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "preferences" ("id" bigserial primary key, "content" text, "finder_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fc202332d3"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+, CONSTRAINT "fk_rails_87f1c9c7bd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_finder_id" ON "preferences"  ("finder_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_user_id" ON "preferences"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123144138"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddTokenToUsers (20210123150649)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" character varying(30)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210123150649"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-25 12:21:56.550714"], ["updated_at", "2021-01-25 12:21:56.550714"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6132112090834568685)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "ix9g69D6shCNEnZxPtdz"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "pierre@pierre.pierre"], ["encrypted_password", "$2a$12$ZN25HQi2pjLLhHyr7cB9oeBHNnjpfJVNGNfnhH9J3iCSfkYoveSv6"], ["user_name", "Pierre"], ["created_at", "2021-01-25 12:21:56.804817"], ["updated_at", "2021-01-25 12:21:56.804817"], ["authentication_token", "ix9g69D6shCNEnZxPtdz"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:23:24 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 38ms (ActiveRecord: 3.8ms | Allocations: 10478)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:23:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (106.53ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  [1m[36mFinder Create (0.7ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["user_id", 1], ["created_at", "2021-01-25 12:23:54.843042"], ["updated_at", "2021-01-25 12:23:54.843042"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:37:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.5ms | Allocations: 275)
+Completed 201 Created in 342ms (Views: 5.3ms | ActiveRecord: 4.7ms | Excon: 106.5ms | Allocations: 29527)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:26:40 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+                          "title" => @movie_title,
+                          ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+...                     "title" => @movie_title,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...                  "overview" => @movie_overview,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...              "vote_average" => @movie_vote_average })
+...                             ^~):
+  
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:26:58 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+                          "title"=> @movie_title,
+                          ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+...                      "title"=> @movie_title,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...                   "overview"=> @movie_overview,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...               "vote_average"=> @movie_vote_average })
+...                             ^~):
+  
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:33:33 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tIDENTIFIER, expecting '}'
+                          title: @movie_title,
+                          ^~~~~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...                   "overview"=> @movie_overview,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...               "vote_average"=> @movie_vote_average })
+...                             ^~):
+  
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+  [1m[36mFinder Load (0.5ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:35:29 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+                          "title"=> @movie_title,
+                          ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+...                      "title"=> @movie_title,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...                   "overview"=> @movie_overview,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...               "vote_average"=> @movie_vote_average })
+...                             ^~):
+  
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:35:47 +0000
+  
+SyntaxError (/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+                          "title"=> @movie_title,
+                          ^
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+...                      "title"=> @movie_title,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...                   "overview"=> @movie_overview,
+...                             ^~
+/home/pierre/code/pcroch/find-movie/app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+...               "vote_average"=> @movie_vote_average })
+...                             ^~):
+  
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/api/v1/finders_controller.rb:34: syntax error, unexpected =>, expecting end
+app/controllers/api/v1/finders_controller.rb:35: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+app/controllers/api/v1/finders_controller.rb:36: syntax error, unexpected =>, expecting '.' or &. or :: or '['
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:36:12 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (114.28ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "title", "overview", "vote_average", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["title", "The Lord of the Rings: The Fellowship of the Ring"], ["overview", "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed."], ["vote_average", "8.3"], ["user_id", 1], ["created_at", "2021-01-25 12:36:28.281851"], ["updated_at", "2021-01-25 12:36:28.281851"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.2ms | Allocations: 101)
+Completed 201 Created in 15974ms (Views: 0.9ms | ActiveRecord: 15.7ms | Excon: 114.3ms | Allocations: 176013)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-25 12:36:33 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2003-12-18", "duration"=>"200", "rating"=>["5", "9"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[34mExcon Request[0m (71.49ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&include_adult=false&include_video=false&page=1&with_runtime.gte=200&primary_release_date.gte=2003&vote_count.gte=2500&vote_average.gte=5&vote_average.lte=9[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (7.86 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "title", "overview", "vote_average", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["release", "2003"], ["duration", "200"], ["language", "{French,\"The Lord of the Rings: The Fellowship of the Ring\"}"], ["rating", "{5,9}"], ["title", "The Lord of the Rings: The Fellowship of the Ring"], ["overview", "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed."], ["vote_average", "8.3"], ["user_id", 1], ["created_at", "2021-01-25 12:36:33.792446"], ["updated_at", "2021-01-25 12:36:33.792446"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.2ms | Allocations: 296)
+Completed 201 Created in 187ms (Views: 3.7ms | ActiveRecord: 8.7ms | Excon: 71.5ms | Allocations: 36526)
+
+

@@ -1,5 +1,5 @@
 p  json
-json.extract! @finder, :id, :duration, :language, :rating, :release
+json.extract! @finder, :id, :release, :title, :overview, :vote_average
 # json.comments @finder.preference do |pref|
 #   json.extract! comment, :id, :content
 
