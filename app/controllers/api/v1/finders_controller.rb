@@ -4,7 +4,9 @@ class Api::V1::FindersController < Api::V1::BaseController
   before_action :set_finder, only: [ :show, :update, :destroy ]
 
   def index
+    # binding.pry
     @finders = policy_scope(Finder)
+    @movies = Movie.where(finder_id: @finders)
   end
 
   def show
@@ -26,14 +28,14 @@ class Api::V1::FindersController < Api::V1::BaseController
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
     find_country(@min_release, @min_duration, @min_rating, @max_rating)
-# binding.pry
+binding.pry
     @finder = Finder.new({"release"=> @min_release,
                           "duration"=>@min_duration,
                           "language"=>["French", @movie_title],
-                          "rating"=>[@min_rating, @max_rating],
-                          "title"=> @movie_title,
-                          "overview"=> @movie_overview,
-                          "vote_average"=> @movie_vote_average })
+                          "rating"=>[@min_rating, @max_rating]})
+                          # "title"=> @movie_title,
+                          # "overview"=> @movie_overview,
+                          # "vote_average"=> @movie_vote_average })
 
     @finder.user = current_user
     authorize @finder
