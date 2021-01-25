@@ -10,10 +10,9 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def show
-
   end
 
-   def update
+  def update
     if @finder.update(finder_params)
       render :show
     else
@@ -27,37 +26,39 @@ class Api::V1::FindersController < Api::V1::BaseController
     @vote_count = 2500
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
+
     find_country(@min_release, @min_duration, @min_rating, @max_rating)
 
     @finder = Finder.new({"release"=> @min_release,
                           "duration"=>@min_duration,
                           "language"=>["French", @movie_title],
                           "rating"=>[@min_rating, @max_rating] })
-
-
-
     @finder.user = current_user
     authorize @finder
     if @finder.save
-             @movie = Movie.new({"finder_id" => @finder.id,
-                          "title"=> @movie_title,
-                          "overview"=> @movie_overview,
-                          "vote_average"=> @movie_vote_average })
-      # binding.pry
-      @movie.save
+
+      i = 0
+      @body["results"].count < 10 ? upper_limit = @body["results"].count : 10
+      while i < upper_limit
+        movie = Movie.new({"finder_id" => @finder.id,
+
+                        "title"=> @body["results"][i]["original_title"],
+                        "overview"=> @body["results"][i]["overview"],
+                        "vote_average"=> @body["results"][i]["vote_average"] })
+        movie.save
+        i += 1
+      end
       render :show, status: :created
     else
       render_error
     end
   end
 
-    def destroy
+  def destroy
     @finder.destroy
     head :no_content
     # No need to create a `destroy.json.jbuilder` view
   end
-
-
   private
 
   def set_finder
@@ -65,29 +66,22 @@ class Api::V1::FindersController < Api::V1::BaseController
     authorize @finder  # For Pundit
   end
 
-
   def finder_params
     params.require(:finder).permit(:duration, :release, language: [], rating: [])
   end
 
   def render_error
-    render json: { errors: @finder.errors.full_messages },
-      status: :unprocessable_entity
+    render json: { errors: @finder.errors.full_messages },status: :unprocessable_entity
   end
 
   def request_api(url)
-    response = Excon.get(
-      url)
+    response = Excon.get(url)
     return nil if response.status != 200
-    # binding.pry
-    # p @bb = JSON.parse(response.body)
-    @movie_title = JSON.parse(response.body)["results"][0]["original_title"]
-    @movie_overview = JSON.parse(response.body)["results"][0]["overview"]
-    @movie_vote_average = JSON.parse(response.body)["results"][0]["vote_average"]
-    # @movie_title = JSON.parse(response.body)["results"][0]["original_title"]
 
+    @body = JSON.parse(response.body)
 
   end
+
   def find_country(minrel, mindur, minrat, maxrat)
     key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
     request_api(
