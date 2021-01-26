@@ -4,8 +4,9 @@ class Api::V1::FindersController < Api::V1::BaseController
   before_action :set_finder, only: [ :show, :update, :destroy ]
 
   def index
-    # binding.pry
+
     @finders = policy_scope(Finder)
+    binding.pry
     @movies = Movie.where(finder_id: @finders)
   end
 
@@ -26,7 +27,7 @@ class Api::V1::FindersController < Api::V1::BaseController
     @vote_count = 2500
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
-
+binding.pry
     find_country(@min_release, @min_duration, @min_rating, @max_rating)
 
     @finder = Finder.new({"release"=> @min_release,
@@ -41,7 +42,6 @@ class Api::V1::FindersController < Api::V1::BaseController
       @body["results"].count < 10 ? upper_limit = @body["results"].count : 10
       while i < upper_limit
         movie = Movie.new({"finder_id" => @finder.id,
-
                         "title"=> @body["results"][i]["original_title"],
                         "overview"=> @body["results"][i]["overview"],
                         "vote_average"=> @body["results"][i]["vote_average"] })
@@ -67,7 +67,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def finder_params
-    params.require(:finder).permit(:duration, :release, language: [], rating: [])
+    params.require(:finder).permit(:duration, :release, language: [], rating: [], attendees: [])
   end
 
   def render_error

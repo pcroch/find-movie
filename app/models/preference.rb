@@ -1,4 +1,5 @@
 class Preference < ApplicationRecord
-  belongs_to :finder
+  has_many :preference_finders
+  has_many :finders, :through => :preference_finders
   belongs_to :user
 end

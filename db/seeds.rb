@@ -7,6 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-user = User.create(email: "pierre@pierre.pierre", password: 'testest', user_name: "Pierre")
+User.create(email: "pierre@pierre.pierre", password: 'testest', user_name: "PierreUser")
 
 # testing = Finder.create(release: "2008", rating: ["1", "2"])
+User.create(email: "Bob@Bob.Bob", password: 'testest', user_name: "BobUser")
+User.create(email: "Fred@Fred.Fred", password: 'testest', user_name: "FredUser")
+User.create(email: "John@John.John", password: 'testest', user_name: "JohnUser")
+
+# # finder
+# event = Finder.new(release: "2008", duration: "200", rating: ["5", "10"], user_id: "1")
+
+# # preferences
+# Preference.create(user_id: 1, name: "Pierre", finder_id: 1, content: ["action", "Commedy", "Horror"])
+# Preference.create(user_id: 2, name: "Bob", finder_id: 1, content: ["Adventure", "Commedy", "Horror"])
+# Preference.create(user_id: 2, name: "Fred", finder_id: 1, content: ["Adventure", "Commedy", "Horror"])
+# Preference.create(user_id: 4, name: "John", finder_id: 1, content: ["Adventure", "Commedy", "action"])
