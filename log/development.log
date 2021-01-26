@@ -8277,3 +8277,57 @@ Completed 201 Created in 89164ms (Views: 6.2ms | ActiveRecord: 24.6ms | Excon: 5
 Processing by Api::V1::FindersController#create as JSON
   Parameters: {"finder"=>{"release"=>"2008-12-18", "duration"=>"210", "attendees"=>["pierre", "Bob"], "rating"=>["5", "10"]}}
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.4ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ (pry):14:in `create'
+Completed 500 Internal Server Error in 2257942ms (ActiveRecord: 7.4ms | Allocations: 5835310)
+
+
+  
+Errno::EIO (Input/output error @ io_write - <STDOUT>):
+  
+app/controllers/api/v1/finders_controller.rb:31:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-01-26 16:21:01 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008-12-18", "duration"=>"210", "attendees"=>["pierre", "Bob"], "rating"=>["5", "10"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.4ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ (pry):2:in `create'
+  [1m[36mPreference Load (0.8ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:47:in `create'
+  [1m[36mPreference Load (0.3ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ (pry):7:in `create'
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:47:in `create'
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1 LIMIT $2[0m  [["name", "Pierre"], ["LIMIT", 11]]
+  ↳ app/controllers/api/v1/finders_controller.rb:47:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:47:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:47:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ (pry):28:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ (pry):30:in `create'
+  [1m[36mPreference Load (0.3ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):34:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):39:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):41:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):48:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):50:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):53:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):55:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ (pry):57:in `create'
+  [1m[36mPreference Load (0.4ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "pierre"]]
+  ↳ (pry):65:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ (pry):67:in `create'
+  [1m[36mCACHE Preference Load (0.0ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ (pry):71:in `create'

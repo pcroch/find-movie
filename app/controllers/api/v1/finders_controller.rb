@@ -27,6 +27,30 @@ class Api::V1::FindersController < Api::V1::BaseController
     @vote_count = 2500
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
+
+    # find the matching preferences
+# https://stackoverflow.com/questions/5128200/how-to-count-identical-string-elements-in-a-ruby-array
+          i = 0
+          j = (finder_params["attendees"].count - 1)
+          @preferences = []
+      while i < j
+        # find the name of the tteendes and extract them
+        name = finder_params["attendees"][i]
+        tmp = Preference.where(name: name)[0][:content]
+        tmp.each{|string| @preferences.append(string) }
+        counts = Hash.new(0)
+        @preferences.each { |preference| counts[preference] += 1 }
+        # count number of self occurance and sort it Desc
+        preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
+        choice = counts.max_by{|k,v| v}
+               # I hav thepref to filter
+        choice = choice[0]
+
+
+
+
+        i += 1
+      end
 binding.pry
     find_country(@min_release, @min_duration, @min_rating, @max_rating)
 
