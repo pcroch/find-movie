@@ -19,6 +19,6 @@ event = Finder.new(release: "2008", duration: "200", rating: ["5", "10"], user_i
 event.save
 # # preferences
 Preference.create(user_id: 1, name: "Pierre", finder_id: 1, content: ["Action", "Comedy", "Horror"])
-Preference.create(user_id: 2, name: "Bob", finder_id: 1, content: ["Adventure", "Comedy", "Horror"])
+Preference.create(user_id: 2, name: "Bob", finder_id: 1, content: ["Adventure", "Family", "Horror"])
 Preference.create(user_id: 2, name: "Fred", finder_id: 1, content: ["Adventure", "Comedy", "Horror"])
-Preference.create(user_id: 4, name: "John", finder_id: 1, content: ["Adventure", "Comedy", "action"])
+Preference.create(user_id: 4, name: "John", finder_id: 1, content: ["Adventure", "Drama", "Western"])
