@@ -6,7 +6,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   def index
 
     @finders = policy_scope(Finder)
-    binding.pry
+
     @movies = Movie.where(finder_id: @finders)
   end
 
@@ -22,16 +22,17 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
+    get_genre_id
     @min_release = finder_params[:release][0..3].to_i
     @min_duration = finder_params[:duration].to_i
-    @vote_count = 2500
+    @vote_count = 100
     @min_rating = finder_params[:rating].first.to_i
     @max_rating = finder_params[:rating][1].to_i
 
     # find the matching preferences
 # https://stackoverflow.com/questions/5128200/how-to-count-identical-string-elements-in-a-ruby-array
           i = 0
-          j = (finder_params["attendees"].count - 1)
+          j = (finder_params["attendees"].count)
           @preferences = []
       while i < j
         # find the name of the tteendes and extract them
@@ -41,18 +42,22 @@ class Api::V1::FindersController < Api::V1::BaseController
         counts = Hash.new(0)
         @preferences.each { |preference| counts[preference] += 1 }
         # count number of self occurance and sort it Desc
-        preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
+        counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
         choice = counts.max_by{|k,v| v}
                # I hav thepref to filter
-        choice = choice[0]
+        @genre = @genre_hash[choice[0].to_sym]
+
+        #get the id
 
 
 
 
         i += 1
+
       end
-binding.pry
-    find_country(@min_release, @min_duration, @min_rating, @max_rating)
+
+
+    find_country(@min_release, @min_duration, @vote_count, @min_rating, @max_rating, @genre)
 
     @finder = Finder.new({"release"=> @min_release,
                           "duration"=>@min_duration,
@@ -63,7 +68,8 @@ binding.pry
     if @finder.save
 
       i = 0
-      @body["results"].count < 10 ? upper_limit = @body["results"].count : 10
+      # binding.pry
+      @body["results"].count < 10 ? upper_limit = @body["results"].count : upper_limit = 10
       while i < upper_limit
         movie = Movie.new({"finder_id" => @finder.id,
                         "title"=> @body["results"][i]["original_title"],
@@ -98,6 +104,14 @@ binding.pry
     render json: { errors: @finder.errors.full_messages },status: :unprocessable_entity
   end
 
+  def get_genre_id
+    # @genre_id = JSON.parse(Excon.get("https://api.themoviedb.org/3/genre/movie/list?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US").body)["genres"]
+    @genre_hash = { Action: 28, Adventure: 12, Animation: 12, Comedy: 35, Crime: 80,
+                    Documentary: 99, Drama: 18, Family: 10_751, Fantasy: 14, History: 36, Horror: 27,
+                    Music: 10_402, Mystery: 9648, Romance: 10_749, Science_Fiction: 878, TV_Movie: 10_770,
+                    Thriller: 53, War: 10_752, Western: 37 }
+  end
+
   def request_api(url)
     response = Excon.get(url)
     return nil if response.status != 200
@@ -106,11 +120,12 @@ binding.pry
 
   end
 
-  def find_country(minrel, mindur, minrat, maxrat)
+  def find_country(minrel, mindur, vote, minrat, maxrat, gen)
     key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
     request_api(
-      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&include_adult=false&include_video=false&page=1&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel}&vote_count.gte=2500&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}"
+      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel}&vote_count.gte=#{vote}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}?"
     )
+
   end
 end
 

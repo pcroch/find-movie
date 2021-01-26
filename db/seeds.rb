@@ -15,10 +15,10 @@ User.create(email: "Fred@Fred.Fred", password: 'testest', user_name: "FredUser")
 User.create(email: "John@John.John", password: 'testest', user_name: "JohnUser")
 
 # # finder
-# event = Finder.new(release: "2008", duration: "200", rating: ["5", "10"], user_id: "1")
-
+event = Finder.new(release: "2008", duration: "200", rating: ["5", "10"], user_id: "1")
+event.save
 # # preferences
-# Preference.create(user_id: 1, name: "Pierre", finder_id: 1, content: ["action", "Commedy", "Horror"])
-# Preference.create(user_id: 2, name: "Bob", finder_id: 1, content: ["Adventure", "Commedy", "Horror"])
-# Preference.create(user_id: 2, name: "Fred", finder_id: 1, content: ["Adventure", "Commedy", "Horror"])
-# Preference.create(user_id: 4, name: "John", finder_id: 1, content: ["Adventure", "Commedy", "action"])
+Preference.create(user_id: 1, name: "Pierre", finder_id: 1, content: ["Action", "Comedy", "Horror"])
+Preference.create(user_id: 2, name: "Bob", finder_id: 1, content: ["Adventure", "Comedy", "Horror"])
+Preference.create(user_id: 2, name: "Fred", finder_id: 1, content: ["Adventure", "Comedy", "Horror"])
+Preference.create(user_id: 4, name: "John", finder_id: 1, content: ["Adventure", "Comedy", "action"])
