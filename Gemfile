@@ -33,9 +33,13 @@ gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'rspec-rails', '~> 4.0.2'
+  gem 'faker'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  # gem 'factory_girl_rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -68,3 +72,6 @@ gem 'simple_token_authentication'
 
 # fetch api
 gem 'excon-rails', '~> 1.0'
+
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# gem 'rack-cors'

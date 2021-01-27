@@ -1,0 +1,1540 @@
+  [1m[35m (17.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "find_movie_test"[0m
+  [1m[35m (160.0ms)[0m  [1m[35mCREATE DATABASE "find_movie_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "finders" CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "finders" ("id" bigserial primary key, "release" character varying, "duration" character varying, "language" character varying[] DEFAULT '{}', "rating" character varying[] DEFAULT '{}', "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_finders_on_user_id" ON "finders"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "movies" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "movies" ("id" bigserial primary key, "title" character varying, "overview" character varying, "vote_average" character varying, "finder_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_movies_on_finder_id" ON "movies"  ("finder_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "preference_finders" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "preference_finders" ("id" bigserial primary key, "preference_id" bigint NOT NULL, "finder_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX  "index_preference_finders_on_finder_id" ON "preference_finders"  ("finder_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_preference_finders_on_preference_id" ON "preference_finders"  ("preference_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "preferences" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "preferences" ("id" bigserial primary key, "content" text[] DEFAULT '{}', "name" character varying, "finder_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_finder_id" ON "preferences"  ("finder_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_preferences_on_user_id" ON "preferences"  ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "user_name" character varying, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "authentication_token" character varying(30))[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "finders" ADD CONSTRAINT "fk_rails_61bbda3fb5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "movies" ADD CONSTRAINT "fk_rails_271818b738"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "preference_finders" ADD CONSTRAINT "fk_rails_1187745045"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "preference_finders" ADD CONSTRAINT "fk_rails_27e21eb29b"
+FOREIGN KEY ("preference_id")
+  REFERENCES "preferences" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "preferences" ADD CONSTRAINT "fk_rails_fc202332d3"
+FOREIGN KEY ("finder_id")
+  REFERENCES "finders" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "preferences" ADD CONSTRAINT "fk_rails_87f1c9c7bd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210126144211)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210123143216),
+(20210123144035),
+(20210123144138),
+(20210123150649),
+(20210125152048);
+
+[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-01-27 15:45:01.549608"], ["updated_at", "2021-01-27 15:45:01.549608"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "002b63618c7da72ad41f903d1b5b91229e3f4637"], ["created_at", "2021-01-27 15:45:01.551875"], ["updated_at", "2021-01-27 15:45:01.551875"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 15:45:01 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.2ms | Allocations: 977)
+Completed 200 OK in 16ms (Views: 2.0ms | ActiveRecord: 3.2ms | Allocations: 6840)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 15:45:01 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.0ms | Allocations: 137)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 15:45:36 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 977)
+Completed 200 OK in 26ms (Views: 1.5ms | ActiveRecord: 4.2ms | Allocations: 6827)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 15:45:36 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:15:30 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:15:30 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:15:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:15:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:16:08 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.7ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 3.0ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:16:08 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:16:08 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:16:08 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:19:27 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:19:27 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:19:27 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:19:27 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:43:55 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:43:55 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:45:57 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:45:57 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:45:57 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:45:57 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:47:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.6ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.7ms | ActiveRecord: 2.6ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:47:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:47:44 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:47:44 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:11 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:11 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:45 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6820)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:45 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:45 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1132)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:45 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:54 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 4.5ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:54 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:49:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:49:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:49:11 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:49:11 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:51:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 25ms (Views: 1.5ms | ActiveRecord: 4.3ms | Allocations: 6824)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:51:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:51:21 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 1130)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:51:21 +0000
+Processing by Api::V1::FindersController#create as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 226)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:52:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:52:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:53:27 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6824)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:53:27 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:53:27 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:53:27 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:53:54 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.1ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:53:54 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:53:54 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:53:54 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:54:13 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 3.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:54:13 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:54:13 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:54:13 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:54:26 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.6ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.9ms | ActiveRecord: 2.7ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:54:26 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:54:26 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:54:26 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:55:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 4.5ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:55:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:55:44 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:55:44 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:55:55 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.6ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.8ms | ActiveRecord: 2.8ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:55:55 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:55:55 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:55:55 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:56:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:56:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:56:21 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:56:21 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:56:56 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.1ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.5ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:56:56 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:56:56 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:56:56 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:59:05 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.4ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 2.5ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 16:59:05 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:59:05 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 16:59:05 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:01:01 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 3.0ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:01:01 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:01:01 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:01:01 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:02:57 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.5ms | ActiveRecord: 4.1ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:02:57 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:02:57 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:02:57 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:03:20 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.7ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 2.9ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:03:20 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:03:20 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:03:20 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:04:38 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.1ms | Allocations: 6820)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:04:39 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:04:39 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 480)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:04:39 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:04:50 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:04:50 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:04:50 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:04:50 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:05:04 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:05:04 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:05:04 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:05:04 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:05:17 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:05:17 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:05:17 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:05:17 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:06:19 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.5ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 3.0ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:06:19 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:06:19 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:06:19 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.5ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 2.7ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:11 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:11 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:11 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:18 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.5ms | Allocations: 974)
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 2.6ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:18 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:18 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:18 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:07:44 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:44 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:07:44 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:08:08 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:08:08 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:08:08 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:08:08 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:08:51 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.1ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.8ms | ActiveRecord: 3.1ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:08:51 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:08:51 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 478)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:08:51 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 293)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:20:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 4.2ms | Allocations: 6820)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:20:21 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:21:25 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.7ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 4.2ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:21:25 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:24:03 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.3ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:24:03 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:24:03 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "JzHkou8gXhCjd6yPh7Aq"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$xIVrk2ef0DVLYi8HfXroaOoz/8B8dS/FEtgoSvZM1hmUfD3RtghXC"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:24:03.259569"], ["updated_at", "2021-01-27 17:24:03.259569"], ["authentication_token", "JzHkou8gXhCjd6yPh7Aq"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 9701)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:24:03 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "gVM3Uu2vEcKpksyY9NVe"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$3gE/DhtYqVzwTsDyHhCtb.aU/fxnzf09hecmwykc/dRHBcoxDxZzi"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:24:03.266487"], ["updated_at", "2021-01-27 17:24:03.266487"], ["authentication_token", "gVM3Uu2vEcKpksyY9NVe"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:24:24 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 3.9ms | Allocations: 6824)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:24:24 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:24:24 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "eX5rmd4n3qyWF7LmdGMv"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$IpqgSpTTMqQsMw1evlQcd.UL4QcLMddmhazxv24ebD4Y67TgGCavy"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:24:24.066702"], ["updated_at", "2021-01-27 17:24:24.066702"], ["authentication_token", "eX5rmd4n3qyWF7LmdGMv"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 9701)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:24:24 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "kNwZxP8TspcaxY-JpLN3"]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$i1OlKbTxghBERaXDDTCr5.AP/ptd72ux9vNTXQNPK8Y0ZvtWjn/fK"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:24:24.073241"], ["updated_at", "2021-01-27 17:24:24.073241"], ["authentication_token", "kNwZxP8TspcaxY-JpLN3"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:26:25 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.5ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:26:25 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:26:25 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "snmTBmv6BLsuSwK8Bu8T"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$MWQkESeN1SrAXTxfOibKo.nN6.HrZoIU0glyRt7H0VSdjBN9/CA0e"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:26:25.422793"], ["updated_at", "2021-01-27 17:26:25.422793"], ["authentication_token", "snmTBmv6BLsuSwK8Bu8T"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:26:25 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "jsxw7RRWH_WNc_tzzsgD"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$yG555G5EftG6JbWmaUtleenvVOA08HWyHO4BhqADX7PU1yErMkMwG"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:26:25.429534"], ["updated_at", "2021-01-27 17:26:25.429534"], ["authentication_token", "jsxw7RRWH_WNc_tzzsgD"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:26:46 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:26:46 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:26:46 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "qrzKjxZXRJZvao-g1hPX"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$Mz0nqPXNtuLz08hK0cw02eL15ZUOg2fbyYh2lvPyoSO3oGIdqy6Sq"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:26:46.773691"], ["updated_at", "2021-01-27 17:26:46.773691"], ["authentication_token", "qrzKjxZXRJZvao-g1hPX"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:26:46 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"4444@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "4444@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "YLPQkYWyEm7ywzYaT4T_"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "4444@example.com"], ["encrypted_password", "$2a$04$p4svhFxGqIzq0UUckhoVyedpSVrnoVf.iASBodyCUT12rcjgWpOjG"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:26:46.781342"], ["updated_at", "2021-01-27 17:26:46.781342"], ["authentication_token", "YLPQkYWyEm7ywzYaT4T_"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:27:04 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6820)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:27:04 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:27:04 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"44d44@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "44d44@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "FHjwzDRcU-cJxUxq5xr6"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "44d44@example.com"], ["encrypted_password", "$2a$04$n46IqRYNMAcRAbyoAM6Lg.sn.i7PRyAFPehQeWVPkn1FrQkru0mG."], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:27:04.888796"], ["updated_at", "2021-01-27 17:27:04.888796"], ["authentication_token", "FHjwzDRcU-cJxUxq5xr6"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:27:04 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"44d44@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "44d44@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "v-KUSXuTDQkgSZjB3bH-"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "44d44@example.com"], ["encrypted_password", "$2a$04$gcNRXDzfVrK6TSAO9/IPXuxlU8omiGKS6ZfWWwMyn0FOEsnCBV1di"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:27:04.896624"], ["updated_at", "2021-01-27 17:27:04.896624"], ["authentication_token", "v-KUSXuTDQkgSZjB3bH-"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:28:37 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:28:37 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:28:37 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "yNJF2AwHckQXKGdaFU6X"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$zV6VLjmaOga0yWFk8Iwwbe2Zv5dt1eKgo8zVsiJgSI1Ck5Dcjbyc2"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:28:37.206223"], ["updated_at", "2021-01-27 17:28:37.206223"], ["authentication_token", "yNJF2AwHckQXKGdaFU6X"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:28:37 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "_xxk2b4wy8Vy23-wEiB-"]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$hvBqBZfhNPt3xA1qFIDAtelti/vpsdyybtZPeKR.FJ0/jfsSRcj6W"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:28:37.212743"], ["updated_at", "2021-01-27 17:28:37.212743"], ["authentication_token", "_xxk2b4wy8Vy23-wEiB-"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1501)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:29:34 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.0ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:29:35 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.3ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:29:35 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "FtycnH7iYqTcptsPvJdo"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$1QjC3gwP3CgZaAFZ/U7o5eM0Aely7sgaD3Byi3A1wYu6aqhzTgI9K"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:29:35.039392"], ["updated_at", "2021-01-27 17:29:35.039392"], ["authentication_token", "FtycnH7iYqTcptsPvJdo"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:29:35 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "TyhmV6sYL1MXZp--LQMy"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$NYp24GakczKBlC0elnBvTed1490dvR4rKmf0H2klX9m5S64N1Vnzy"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:29:35.047277"], ["updated_at", "2021-01-27 17:29:35.047277"], ["authentication_token", "TyhmV6sYL1MXZp--LQMy"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1501)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:29:41 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.9ms | Allocations: 974)
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 4.4ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:29:41 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:29:41 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "4NANutnxDoAGjkAxmCj4"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$Jv559YGH/V0R1X67CQAcKeEnKBiYYhqBfdo/0fhXvTr8QE4wmHwbO"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:29:41.857972"], ["updated_at", "2021-01-27 17:29:41.857972"], ["authentication_token", "4NANutnxDoAGjkAxmCj4"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 9700)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:29:41 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "cyfAWjjsYyzLnAWumR3v"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$M/43ICfzhUhZvf7VY21wP.8hH1UIq6OCSxCp/o75hwq4Q0HUvSPqu"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:29:41.865547"], ["updated_at", "2021-01-27 17:29:41.865547"], ["authentication_token", "cyfAWjjsYyzLnAWumR3v"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1501)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:45:52 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 1.6ms | Allocations: 974)
+Completed 200 OK in 12ms (Views: 1.6ms | ActiveRecord: 2.8ms | Allocations: 6822)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-01-27 17:45:52 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.5ms | Allocations: 137)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:45:52 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "eN1pg-8JtuTsDrgYWvef"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$/nVa4fV.PzPZXQUssfcWv.MrIMtXN782vntT4ZpVyJXEuLmJ68iay"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:45:52.964393"], ["updated_at", "2021-01-27 17:45:52.964393"], ["authentication_token", "eN1pg-8JtuTsDrgYWvef"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 9701)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-01-27 17:45:52 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "xe_Huomi7ezpKkWi8EmY"]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$GWCegxMGyykEUWan6.ZXI.pJ6E2ypDR.6aRn.IW4YnzC9f/CjykAy"], ["user_name", "qwerty"], ["created_at", "2021-01-27 17:45:52.970568"], ["updated_at", "2021-01-27 17:45:52.970568"], ["authentication_token", "xe_Huomi7ezpKkWi8EmY"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1501)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m

@@ -4,6 +4,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   before_action :load_user, only: :create
   # sign in
   def create
+    # is that controller usefull?
     if @user.valid_password?(sign_in_params[:password])
       sign_in "user", @user
       render json: {
