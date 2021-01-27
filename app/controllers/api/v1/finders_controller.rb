@@ -30,33 +30,23 @@ class Api::V1::FindersController < Api::V1::BaseController
     @max_rating = finder_params[:rating][1].to_i
 
     # find the matching preferences
-# https://stackoverflow.com/questions/5128200/how-to-count-identical-string-elements-in-a-ruby-array
-          i = 0
-          j = (finder_params["attendees"].count)
-          @preferences = []
-      while i < j
-        # find the name of the tteendes and extract them
-        name = finder_params["attendees"][i]
-        tmp = Preference.where(name: name)[0][:content]
-        tmp.each{|string| @preferences.append(string) }
-        counts = Hash.new(0)
-        @preferences.each { |preference| counts[preference] += 1 }
-        # count number of self occurance and sort it Desc
-        counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}
-        choice = counts.max_by{|k,v| v}
-               # I hav thepref to filter
-        @genre = @genre_hash[choice[0].to_sym]
-
-        #get the id
-
-
-
-
+    i = 0
+    j = (finder_params["attendees"].count)
+    @preferences = []
+    while i < j
+      # find the name of the tteendes and extract them
+      name = finder_params["attendees"][i]
+      tmp = Preference.where(name: name)[0][:content]
+      tmp.each{|string| @preferences.append(string) }
+      @counts = Hash.new(0)
+      @preferences.each { |preference| @counts[preference] += 1 }
+      @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }
         i += 1
+    end
+    choice_count
 
-      end
 
-
+          # binding.pry
     find_country(@min_release, @min_duration, @vote_count, @min_rating, @max_rating, @genre)
 
     @finder = Finder.new({"release"=> @min_release,
@@ -67,9 +57,18 @@ class Api::V1::FindersController < Api::V1::BaseController
     authorize @finder
     if @finder.save
 
-      i = 0
-      # binding.pry
+    # while @body["results"].count < 10
+    #   @vote_count -= 10
+
+    # end
+
+
+    if @body["results"].count == 0
+      empty_request
+    else
       @body["results"].count < 10 ? upper_limit = @body["results"].count : upper_limit = 10
+      i = 0
+      # while i < 10
       while i < upper_limit
         movie = Movie.new({"finder_id" => @finder.id,
                         "title"=> @body["results"][i]["original_title"],
@@ -79,9 +78,11 @@ class Api::V1::FindersController < Api::V1::BaseController
         i += 1
       end
       render :show, status: :created
+    end
     else
       render_error
     end
+
   end
 
   def destroy
@@ -117,7 +118,7 @@ class Api::V1::FindersController < Api::V1::BaseController
     return nil if response.status != 200
 
     @body = JSON.parse(response.body)
-
+# binding.pry
   end
 
   def find_country(minrel, mindur, vote, minrat, maxrat, gen)
@@ -127,6 +128,12 @@ class Api::V1::FindersController < Api::V1::BaseController
     )
 
   end
+
+      def choice_count
+      choice = @counts.max_by{|k,v| v}
+      @genre = @genre_hash[choice[0].to_sym]
+      @counts.delete("Horror")
+    end
 end
 
 
