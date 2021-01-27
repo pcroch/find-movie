@@ -12327,3 +12327,392 @@ Processing by Api::V1::PreferencesController#show as JSON
 Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1187)
 
 
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:35:03 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PreferencesController#index as JSON
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.0ms | Allocations: 118474)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<Api::V1::PreferencesController:0x0000556de9acc1f8>):
+  
+app/controllers/api/v1/preferences_controller.rb:7:in `index'
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:35:36 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PreferencesController#index as JSON
+  Rendering api/v1/preferences/index.json.jbuilder
+  [1m[36mPreference Load (0.5ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/views/api/v1/preferences/index.json.jbuilder:1
+  Rendered api/v1/preferences/index.json.jbuilder (Duration: 7.9ms | Allocations: 6444)
+Completed 200 OK in 27ms (Views: 5.1ms | ActiveRecord: 3.5ms | Allocations: 11518)
+
+
+Started GET "/api/v1/preferences/2" for ::1 at 2021-01-27 13:35:45 +0000
+Processing by Api::V1::PreferencesController#show as JSON
+  Parameters: {"id"=>"2", "preference"=>{}}
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:44:in `set_preference'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.4ms | Allocations: 140)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1882)
+
+
+Started GET "/users/sign_up" for ::1 at 2021-01-27 13:36:48 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 203)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 525)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 14.8ms | Allocations: 5293)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 527)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 211)
+Completed 200 OK in 100ms (Views: 79.7ms | ActiveRecord: 2.4ms | Allocations: 36550)
+
+
+Started POST "/users" for ::1 at 2021-01-27 13:36:49 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"W6QzWP+YrZFohdKTMgSuKvEx98YoOX5TjPIkRSwq05hU6ei0uzpgzJW6YlS71Oi0uZvOlQYx8VYDCrl0Nni/Zw==", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 350)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 79)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1408)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 124)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 21)
+Completed 200 OK in 11ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 8943)
+
+
+Started GET "/users" for ::1 at 2021-01-27 13:36:51 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+request_store (1.5.0) lib/request_store/middleware.rb:19:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/sign_in" for ::1 at 2021-01-27 13:36:59 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 215)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1682)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 124)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 23)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 6476)
+
+
+Started GET "/" for ::1 at 2021-01-27 13:37:15 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/" for ::1 at 2021-01-27 13:37:54 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/" for ::1 at 2021-01-27 13:38:56 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/" for ::1 at 2021-01-27 13:39:09 +0000
+Processing by PagesController#home as */*
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 1062)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-27 13:39:09 +0000
+Processing by Devise::SessionsController#new as */*
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 147)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1083)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 126)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 28)
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 1.7ms | Allocations: 11950)
+
+
+Started GET "/" for ::1 at 2021-01-27 13:39:14 +0000
+Processing by PagesController#home as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 344)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-27 13:39:14 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1050)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 26)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 5050)
+
+
+Started GET "/" for ::1 at 2021-01-27 13:40:22 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/" for ::1 at 2021-01-27 13:40:26 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:41:15 +0000
+Processing by Api::V1::PreferencesController#index as JSON
+  Rendering api/v1/preferences/index.json.jbuilder
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/views/api/v1/preferences/index.json.jbuilder:1
+  Rendered api/v1/preferences/index.json.jbuilder (Duration: 10.9ms | Allocations: 5759)
+Completed 200 OK in 14ms (Views: 9.6ms | ActiveRecord: 1.7ms | Allocations: 9182)
+
+
+Started GET "/" for ::1 at 2021-01-27 13:41:51 +0000
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/pages_controller.rb:2:in `<class:PagesController>'
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/" for ::1 at 2021-01-27 13:41:55 +0000
+Processing by PagesController#home as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 388)
+
+
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:42:04 +0000
+Processing by Api::V1::PreferencesController#index as JSON
+  Rendering api/v1/preferences/index.json.jbuilder
+  [1m[36mPreference Load (0.3ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/views/api/v1/preferences/index.json.jbuilder:1
+  Rendered api/v1/preferences/index.json.jbuilder (Duration: 11.3ms | Allocations: 5759)
+Completed 200 OK in 16ms (Views: 8.7ms | ActiveRecord: 3.2ms | Allocations: 9169)
+
+
+Started POST "/api/v1/preferences" for ::1 at 2021-01-27 13:42:07 +0000
+Processing by Api::V1::PreferencesController#create as JSON
+  Parameters: {"preference"=>{"name"=>"QwertyUser", "content"=>["Action", "Comedy"], "finder_id"=>"1"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "azs@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[36mPreference Create (0.8ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "finder_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "{Action,Comedy}"], ["name", "QwertyUser"], ["finder_id", 1], ["user_id", 7], ["created_at", "2021-01-27 13:42:07.467283"], ["updated_at", "2021-01-27 13:42:07.467283"]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.1ms | Allocations: 63)
+Completed 201 Created in 25ms (Views: 0.5ms | ActiveRecord: 5.1ms | Allocations: 14022)
+
+
+Started GET "/api/v1/preferences/2" for ::1 at 2021-01-27 13:42:10 +0000
+Processing by Api::V1::PreferencesController#show as JSON
+  Parameters: {"id"=>"2", "preference"=>{}}
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:44:in `set_preference'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.1ms | Allocations: 77)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1318)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-27 13:42:15 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008-12-18", "duration"=>"210", "attendees"=>["Pierre", "Bob", "Fred"], "rating"=>["5", "10"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Fred"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[34mExcon Request[0m (110.56ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=27&with_runtime.gte=210&primary_release_date.gte=2008&vote_count.gte=100&vote_average.gte=5&vote_average.lte=10?[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (1.91 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2008"], ["duration", "210"], ["language", "{French,NULL}"], ["rating", "{5,10}"], ["user_id", 1], ["created_at", "2021-01-27 13:42:15.956608"], ["updated_at", "2021-01-27 13:42:15.956608"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.5ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "We Are What We Are"], ["overview", "The Parkers, reclusive people who cling to ancient customs, find their secret lives threatened when a torrential downpour and the death of the family matriarch forces daughters Iris and Rose to assume special responsibilities."], ["vote_average", "5.7"], ["finder_id", 18], ["created_at", "2021-01-27 13:42:15.987018"], ["updated_at", "2021-01-27 13:42:15.987018"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Once Bitten"], ["overview", "Mark wants to lose his virginity, but his girlfriend wants to wait. Unfortunately for both of them, a 400-year-old vampire Countess needs to turn a virgin into a vampire before Halloween in order to preserve her own youthful appearance, and when she finds Mark, she turns his life upside-down."], ["vote_average", "5.6"], ["finder_id", 18], ["created_at", "2021-01-27 13:42:15.992824"], ["updated_at", "2021-01-27 13:42:15.992824"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Riget"], ["overview", "The first part of a Danish miniseries that has been edited into two massive films, \"Riget\" is set in the neurosurgical ward of Copenhagen's Rigshospitalet, the city and country's main hospital, nicknamed \"Riget\". The show follows a number of characters, both staff and patients, as they encounter bizarre phenomena, both human and supernatural."], ["vote_average", "7.6"], ["finder_id", 18], ["created_at", "2021-01-27 13:42:15.998251"], ["updated_at", "2021-01-27 13:42:15.998251"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 18]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 5.1ms | Allocations: 3212)
+Completed 201 Created in 343ms (Views: 5.9ms | ActiveRecord: 10.9ms | Excon: 110.6ms | Allocations: 44476)
+
+
+Started GET "/" for ::1 at 2021-01-27 13:42:20 +0000
+Processing by PagesController#home as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 325)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-27 13:43:52 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 147)
+  Rendered /home/pierre/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/devise-4.7.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 127)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 23)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 5305)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-01-27 13:49:20 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2008-12-18", "duration"=>"210", "attendees"=>["Pierre", "Bob", "Fred"], "rating"=>["5", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Bob"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Fred"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:40:in `create'
+  [1m[34mExcon Request[0m (97.55ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=27&with_runtime.gte=210&primary_release_date.gte=2008&vote_count.gte=100&vote_average.gte=5&vote_average.lte=10?[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (1.91 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2008"], ["duration", "210"], ["language", "{French,NULL}"], ["rating", "{5,10}"], ["user_id", 1], ["created_at", "2021-01-27 13:49:21.011909"], ["updated_at", "2021-01-27 13:49:21.011909"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:59:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "We Are What We Are"], ["overview", "The Parkers, reclusive people who cling to ancient customs, find their secret lives threatened when a torrential downpour and the death of the family matriarch forces daughters Iris and Rose to assume special responsibilities."], ["vote_average", "5.7"], ["finder_id", 19], ["created_at", "2021-01-27 13:49:21.043730"], ["updated_at", "2021-01-27 13:49:21.043730"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Once Bitten"], ["overview", "Mark wants to lose his virginity, but his girlfriend wants to wait. Unfortunately for both of them, a 400-year-old vampire Countess needs to turn a virgin into a vampire before Halloween in order to preserve her own youthful appearance, and when she finds Mark, she turns his life upside-down."], ["vote_average", "5.6"], ["finder_id", 19], ["created_at", "2021-01-27 13:49:21.049823"], ["updated_at", "2021-01-27 13:49:21.049823"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Riget"], ["overview", "The first part of a Danish miniseries that has been edited into two massive films, \"Riget\" is set in the neurosurgical ward of Copenhagen's Rigshospitalet, the city and country's main hospital, nicknamed \"Riget\". The show follows a number of characters, both staff and patients, as they encounter bizarre phenomena, both human and supernatural."], ["vote_average", "7.6"], ["finder_id", 19], ["created_at", "2021-01-27 13:49:21.055468"], ["updated_at", "2021-01-27 13:49:21.055468"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:78:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 19]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 3.3ms | Allocations: 2479)
+Completed 201 Created in 227ms (Views: 3.8ms | ActiveRecord: 15.1ms | Excon: 97.6ms | Allocations: 57514)
+
+
+Started GET "/api/v1/preferences/2" for ::1 at 2021-01-27 13:49:22 +0000
+Processing by Api::V1::PreferencesController#show as JSON
+  Parameters: {"id"=>"2", "preference"=>{}}
+  [1m[36mPreference Load (0.3ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:44:in `set_preference'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.1ms | Allocations: 79)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1714)
+
+
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:49:24 +0000
+Processing by Api::V1::PreferencesController#index as JSON
+  Rendering api/v1/preferences/index.json.jbuilder
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/views/api/v1/preferences/index.json.jbuilder:1
+  Rendered api/v1/preferences/index.json.jbuilder (Duration: 1.0ms | Allocations: 1181)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1701)
+
+
+Started POST "/api/v1/preferences" for ::1 at 2021-01-27 13:49:27 +0000
+Processing by Api::V1::PreferencesController#create as JSON
+  Parameters: {"preference"=>{"name"=>"QwertyUser", "content"=>["Action", "Comedy"], "finder_id"=>"1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "azs@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "finder_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "{Action,Comedy}"], ["name", "QwertyUser"], ["finder_id", 1], ["user_id", 7], ["created_at", "2021-01-27 13:49:27.114050"], ["updated_at", "2021-01-27 13:49:27.114050"]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.1ms | Allocations: 63)
+Completed 201 Created in 7ms (Views: 0.5ms | ActiveRecord: 1.3ms | Allocations: 5735)
+
+
+Started POST "/api/v1/preferences" for ::1 at 2021-01-27 13:49:34 +0000
+Processing by Api::V1::PreferencesController#create as JSON
+  Parameters: {"preference"=>{"name"=>"QwertyUser", "content"=>["Action", "Comedy"], "finder_id"=>"1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "azs@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "finder_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "{Action,Comedy}"], ["name", "QwertyUser"], ["finder_id", 1], ["user_id", 7], ["created_at", "2021-01-27 13:49:34.214339"], ["updated_at", "2021-01-27 13:49:34.214339"]]
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/preferences_controller.rb:27:in `create'
+  Rendering api/v1/preferences/show.json.jbuilder
+  Rendered api/v1/preferences/show.json.jbuilder (Duration: 0.1ms | Allocations: 63)
+Completed 201 Created in 5ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 4698)
+
+
+Started GET "/api/v1/preferences" for ::1 at 2021-01-27 13:49:40 +0000
+Processing by Api::V1::PreferencesController#index as JSON
+  Rendering api/v1/preferences/index.json.jbuilder
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences"[0m
+  ↳ app/views/api/v1/preferences/index.json.jbuilder:1
+  Rendered api/v1/preferences/index.json.jbuilder (Duration: 1.0ms | Allocations: 1329)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 1852)
+
+
