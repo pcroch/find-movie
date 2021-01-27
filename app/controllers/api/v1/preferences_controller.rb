@@ -1,0 +1,58 @@
+# app/controllers/api/v1/restaurants_controller.rb
+class Api::V1::PreferencesController < Api::V1::BaseController
+  # before_action :authenticate_user!, except: [:create, :index]
+  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  before_action :set_preference, only: [ :show, :update, :destroy ]
+  def index
+    @preferences = policy_scope(Preference)
+  end
+
+  def show
+
+  end
+
+  def update
+    # if @preference.where(name: params[:id]).update_all(product_params)
+    if @preference.update(preference_params)
+      render :show
+    else
+      render_error
+    end
+  end
+
+  def create
+    @preference = Preference.new(preference_params)
+    @preference.user = current_user
+    authorize @preference
+    if @preference.save
+      render :show, status: :created
+    else
+      render_error
+    end
+  end
+
+  def destroy
+    @preference.destroy
+    head :no_content
+    # No need to create a `destroy.json.jbuilder` view
+  end
+
+  private
+
+  def set_preference
+    # @preference = preference.where(name: params[:id])
+    @preference = Preference.find(params[:id])
+    authorize @preference  # For Pundit
+  end
+
+  def preference_params
+    params.require(:preference).permit(:name, :finder_id, content: [] )
+  end
+
+  def render_error
+    render json: { errors: @preference.errors.full_messages },
+    status: :unprocessable_entity
+  end
+
+
+end
