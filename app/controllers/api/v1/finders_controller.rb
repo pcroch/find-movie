@@ -1,5 +1,6 @@
 require 'pry'
 class Api::V1::FindersController < Api::V1::BaseController
+  # before_action :authenticate_user!, except: [:show, :index]
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
   before_action :set_finder, only: [ :show, :update, :destroy ]
 
