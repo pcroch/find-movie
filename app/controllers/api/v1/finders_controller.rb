@@ -23,6 +23,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
+    # binding.pry
     get_genre_id
     @min_release = finder_params[:release][0..3].to_i
     @min_duration = finder_params[:duration].to_i

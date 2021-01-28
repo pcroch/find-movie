@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email: "pierre@pierre.pierre", password: 'testest', user_name: "PierreUser")
+User.create(email: "pierre@pierre.pierre", password: 'testest', user_name: "PierreUser", authentication_token: "KdapjiY6vz-sBkKmNieF")
 
 # testing = Finder.create(release: "2008", rating: ["1", "2"])
 User.create(email: "Bob@Bob.Bob", password: 'testest', user_name: "BobUser")
