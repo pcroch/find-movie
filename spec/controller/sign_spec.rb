@@ -38,7 +38,8 @@ end
     it 'returns list of events' do
       json_response = JSON.parse(response.body)
       expect(json_response["messages"]).to eq("Sign Up Successfully")
-      # token = json_response["data"]["user"]["authentication_token"]
+      # $token = json_response["data"]["user"]["authentication_token"]
+      # expect(token).to eq("Sign Up Successfully")
 
     end
 
