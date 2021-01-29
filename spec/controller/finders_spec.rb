@@ -25,7 +25,7 @@ RSpec.describe 'Integration testing Finder Controller', type: :request do
       expect(response).to have_http_status(200)
     end
 end
-
+#post heder and  body or params
 # describe 'Create testing' do
 
 #    let!(:user) { User.create(email: "crochet@pierre.pierre", password: 'testest', user_name: "PierreUser", authentication_token: "KdapjiY6vz-sBkKmNabc", id: 1) }
