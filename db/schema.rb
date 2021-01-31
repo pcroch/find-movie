@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_144211) do
   create_table "preferences", force: :cascade do |t|
     t.text "content", default: [], array: true
     t.string "name"
-    t.bigint "finder_id", null: false
+    t.bigint "finder_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

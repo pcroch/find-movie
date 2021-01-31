@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, :uniqueness => {:case_sensitive => true}
+  validates :user_name, uniqueness: { case_sensitive: false}, presence: true
   validates :password, length: 6..20
+
 end

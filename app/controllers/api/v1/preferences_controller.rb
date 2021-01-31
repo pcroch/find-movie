@@ -1,4 +1,4 @@
-# app/controllers/api/v1/restaurants_controller.rb
+require 'pry'
 class Api::V1::PreferencesController < Api::V1::BaseController
   # before_action :authenticate_user!, except: [:create, :index]
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
@@ -22,6 +22,7 @@ class Api::V1::PreferencesController < Api::V1::BaseController
 
   def create
     @preference = Preference.new(preference_params)
+    # binding.pry
     @preference.user = current_user
     authorize @preference
     if @preference.save
@@ -46,7 +47,7 @@ class Api::V1::PreferencesController < Api::V1::BaseController
   end
 
   def preference_params
-    params.require(:preference).permit(:name, :finder_id, content: [] )
+    params.require(:preference).permit(:name, :user_id, :finder_id, content: [] )
   end
 
   def render_error
