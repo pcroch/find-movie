@@ -4,6 +4,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
   before_action :set_finder, only: [ :show, :update, :destroy ]
 
+
   def index
 
     @finders = policy_scope(Finder)
@@ -23,14 +24,17 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
-    # binding.pry
+    # controller validations so error rendering here for each error possible like error unless true
+#
     get_genre_id
     @min_release = finder_params[:release][0..3].to_i
-    @min_duration = finder_params[:duration].to_i
-    @vote_count = 100
-    @min_rating = finder_params[:rating].first.to_i
-    @max_rating = finder_params[:rating][1].to_i
-
+    @min_duration = finder_params[:duration]
+    @vote_count = 2500
+    p "hello"
+    @min_rating = finder_params[:rating].min
+    @max_rating = finder_params[:rating].max
+    p 'bye bye'
+    # binding.pry
     # find the matching preferences
     i = 0
     j = (finder_params["attendees"].count)
@@ -116,15 +120,17 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def request_api(url)
+    # to be change to Nokoiri
     response = Excon.get(url)
     return nil if response.status != 200
-
+    # binding.pry
     @body = JSON.parse(response.body)
-# binding.pry
+
   end
 
   def find_country(minrel, mindur, vote, minrat, maxrat, gen)
     key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
+
     request_api(
       "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel}&vote_count.gte=#{vote}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}?"
     )
@@ -134,6 +140,7 @@ class Api::V1::FindersController < Api::V1::BaseController
       def choice_count
       choice = @counts.max_by{|k,v| v}
       @genre = @genre_hash[choice[0].to_sym]
+      # error of delete to modify
       @counts.delete("Horror")
     end
 end
