@@ -23,38 +23,28 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
-    # binding.pry
     get_genre_id
-    @min_release = finder_params[:release][0..3].to_i
-    @min_duration = finder_params[:duration].to_i
-    @vote_count = 100
-    @min_rating = finder_params[:rating].first.to_i
-    @max_rating = finder_params[:rating][1].to_i
+    hash_params = {}
+    hash_params = {min_release: finder_params[:release][0..3].to_i,
+                   min_duration: finder_params[:duration].to_i,
+                   vote_count: 100, min_rating: finder_params[:rating].first.to_i,
+                   max_rating: finder_params[:rating][1].to_i}
+      # @min_release = finder_params[:release][0..3].to_i
+      # @min_duration = finder_params[:duration].to_i
+      # @vote_count = 100
+      # @min_rating = finder_params[:rating].first.to_i
+      # @max_rating = finder_params[:rating][1].to_i
 
-    # find the matching preferences
-    i = 0
-    j = (finder_params["attendees"].count)
-    @preferences = []
-    while i < j
-      # find the name of the tteendes and extract them
-      name = finder_params["attendees"][i]
-      tmp = Preference.where(name: name)[0][:content]
-      tmp.each{|string| @preferences.append(string) }
-      @counts = Hash.new(0)
-      @preferences.each { |preference| @counts[preference] += 1 }
-      @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }
-        i += 1
-    end
+    matching_preferences
     choice_count
 
+    find_country(hash_params[:min_release], hash_params[:min_duration], hash_params[:vote_count], hash_params[:min_rating], hash_params[:max_rating], hash_params[:genre])
+    # find_country(@min_release, @min_duration, @vote_count, @min_rating, @max_rating, @genre)
 
-          # binding.pry
-    find_country(@min_release, @min_duration, @vote_count, @min_rating, @max_rating, @genre)
-
-    @finder = Finder.new({"release"=> @min_release,
-                          "duration"=>@min_duration,
-                          "language"=>["French", @movie_title],
-                          "rating"=>[@min_rating, @max_rating] })
+    @finder = Finder.new({"release"=> hash_params[:min_release],
+                          "duration"=>hash_params[:min_duration],
+                          "language"=>["French", hash_params[:movie_title]],
+                          "rating"=>[hash_params[:min_rating], hash_params[:max_rating]] })
     @finder.user = current_user
     authorize @finder
     if @finder.save
@@ -131,10 +121,28 @@ class Api::V1::FindersController < Api::V1::BaseController
 
   end
 
-      def choice_count
+    def matching_preferences
+      # find the matching preferences
+      i = 0
+      j = (finder_params["attendees"].count)
+      @preferences = []
+      while i < j
+        # find the name of the tteendes and extract them
+        name = finder_params["attendees"][i]
+        tmp = Preference.where(name: name)[0][:content]
+        tmp.each{|string| @preferences.append(string) }
+        @counts = Hash.new(0)
+        @preferences.each { |preference| @counts[preference] += 1 }
+        @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }
+          i += 1
+      end
+    end
+
+    def choice_count
       choice = @counts.max_by{|k,v| v}
       @genre = @genre_hash[choice[0].to_sym]
-      @counts.delete("Horror")
+      # Following line to be change
+      # @counts.delete("Horror")
     end
 end
 
