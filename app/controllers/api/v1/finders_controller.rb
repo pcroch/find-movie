@@ -83,19 +83,28 @@ class Api::V1::FindersController < Api::V1::BaseController
                     Thriller: 53, War: 10_752, Western: 37 }
   end
 
+  # Validation methods
   def matching_preferences
     # find the matching preferences
     i = 0
     j = (finder_params['attendees'].count)
     @preferences = []
     while i < j
-      # find the name of the tteendes and extract them
+
+      # find the name in the params fir i
       name = finder_params['attendees'][i]
+      # find the name of the user in preference for i
       tmp = Preference.where(name: name)[0][:content]
+      # creating a temporary varaible to create an array to sock the preferences
       tmp.each { |string| @preferences.append(string) }
+      # creating the hash that will count the number of ocurance for each movie category
       @counts = Hash.new(0)
-      @preferences.each { |preference| @counts[preference] += 1 }
-      @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
+      # Useless line , I keep it for now, just in case :/
+      # @preferences.each { |preference| @counts[preference] += 1 }
+
+      # create an has: count with the number of ocurance for each movie category
+      # @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
+      @counts = @preferences.each_with_object(Hash.new(0)) { |e, total| total[e] += 1}
       i += 1
     end
   end
@@ -123,8 +132,11 @@ class Api::V1::FindersController < Api::V1::BaseController
   def choice_count
     choice = @counts.max_by { |_k, v| v }
     @genre = @genre_hash[choice[0].to_sym]
-    # Following line to be change
-    # @counts.delete("Horror")_
+    # Pop first item of the array which is the choice
+    @counts.shift
+
+    # The method will be usesfull later when I will select more result if inferior
+    # to 10. So I will run again that function and will have a new choice
   end
 
   def request_api(url)
