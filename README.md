@@ -10,8 +10,14 @@ For rating params, only the two first value are take into account
 
 
 Know bug:
-If a request is empty, Exccon gem, send the previous reuqest back... pretty useless
+N/A
 
 Validatio done through the controller?
-First refactore  the controller in finder so that I can add data validation later
+Yes 
+
+https://movie-api-finder.herokuapp.com/ for the api
+
+improving the rendering in index, show and create as some variable are no longer used anymore
+testing to end and model valdiation too
+
 
