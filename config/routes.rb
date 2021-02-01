@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users , skip: :all
-  # root to: 'pages#home'
-root to: 'api/v1/finders#index'
+  root to: 'pages#home'
+# root to: 'api/v1/finders#index'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
