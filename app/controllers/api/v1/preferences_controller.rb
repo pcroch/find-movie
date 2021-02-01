@@ -1,4 +1,3 @@
-require 'pry'
 class Api::V1::PreferencesController < Api::V1::BaseController
   # before_action :authenticate_user!, except: [:create, :index]
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
@@ -22,7 +21,6 @@ class Api::V1::PreferencesController < Api::V1::BaseController
 
   def create
     @preference = Preference.new(preference_params)
-    # binding.pry
     @preference.user = current_user
     authorize @preference
     if @preference.save

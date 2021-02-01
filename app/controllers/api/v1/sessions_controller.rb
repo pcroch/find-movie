@@ -1,4 +1,3 @@
-
 class Api::V1::SessionsController < Devise::SessionsController
   before_action :sign_in_params, only: :create
   before_action :load_user, only: :create
