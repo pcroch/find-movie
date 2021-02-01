@@ -5,7 +5,7 @@ Description
 Testing
 
 
-For rating params, only the two first value are take into account
+For rating params, only the two first value are take into account -> solved and validation through model now
 
 
 
