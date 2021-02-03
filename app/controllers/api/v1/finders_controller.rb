@@ -1,4 +1,4 @@
-
+require 'pry'
 class Api::V1::FindersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [:index, :show]
   before_action :set_finder, only: [:show, :update, :destroy]
@@ -20,12 +20,16 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
+    # binding.pry
+    # render json: { error: "No movie found" }, status: :not_found if finder_params[:rating].nil?
     find_genre_id
+     # binding.pry
     hash_params = { min_release: finder_params[:release],
                     min_duration: finder_params[:duration],
                     vote_count: 100,
                     min_rating: finder_params[:rating].min,
                     max_rating: finder_params[:rating].max }
+
     matching_preferences
     choice_count
 
@@ -35,7 +39,6 @@ class Api::V1::FindersController < Api::V1::BaseController
                  hash_params[:min_rating],
                  hash_params[:max_rating],
                  hash_params[:genre])
-
     @finder = Finder.new({ 'release' => hash_params[:min_release],
                            'duration' => hash_params[:min_duration],
                            'language' => ["French", hash_params[:movie_title]],
@@ -92,7 +95,7 @@ class Api::V1::FindersController < Api::V1::BaseController
     @preferences = []
     while i < j
 
-      # find the name in the params fir i
+      # find the name in the params for i
       name = finder_params['attendees'][i]
       # find the name of the user in preference for i
       tmp = Preference.where(name: name)[0][:content]
