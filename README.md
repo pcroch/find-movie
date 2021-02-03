@@ -10,10 +10,12 @@ For rating params, only the two first value are take into account -> solved and 
 
 
 Know bug:
-N/A
+rendering the previous request if the API fetch an empty json==> the gem must be the issue
+Validation in rating and attenddes, if blank, API reponsd a 400 message
 
 Validatio done through the controller?
 Yes 
+And partioally through the model
 
 https://movie-api-finder.herokuapp.com/ for the api
 
