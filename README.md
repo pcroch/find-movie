@@ -12,6 +12,7 @@ For rating params, only the two first value are take into account -> solved and 
 Know bug:
 rendering the previous request if the API fetch an empty json==> the gem must be the issue
 Validation in rating and attenddes, if blank, API reponsd a 400 message
+Date format is wrong: should be yyyy-mm-dd instead of yyyy
 
 Validatio done through the controller?
 Yes 
