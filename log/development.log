@@ -30511,3 +30511,610 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 201 Created in 366ms (Views: 1.3ms | ActiveRecord: 13.2ms | Excon: 75.6ms | Allocations: 54546)
 
 
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:31:50 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>100, "attendees"=>["Pierre"], "rating"=>[5, 10]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (70.05ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=100&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=5&vote_average.lte=10?[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (11.7 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "100"], ["language", "{French,NULL}"], ["rating", "{5,10}"], ["user_id", 1], ["created_at", "2021-02-03 16:31:50.841110"], ["updated_at", "2021-02-03 16:31:50.841110"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.852813"], ["updated_at", "2021-02-03 16:31:50.852813"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.856186"], ["updated_at", "2021-02-03 16:31:50.856186"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.859562"], ["updated_at", "2021-02-03 16:31:50.859562"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.863346"], ["updated_at", "2021-02-03 16:31:50.863346"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.866705"], ["updated_at", "2021-02-03 16:31:50.866705"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.869970"], ["updated_at", "2021-02-03 16:31:50.869970"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.873284"], ["updated_at", "2021-02-03 16:31:50.873284"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.876801"], ["updated_at", "2021-02-03 16:31:50.876801"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)"], ["overview", "Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord."], ["vote_average", "7.1"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.880008"], ["updated_at", "2021-02-03 16:31:50.880008"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Tenet"], ["overview", "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time."], ["vote_average", "7.3"], ["finder_id", 113], ["created_at", "2021-02-03 16:31:50.883281"], ["updated_at", "2021-02-03 16:31:50.883281"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 113]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.8ms | Allocations: 3915)
+Completed 201 Created in 316ms (Views: 3.8ms | ActiveRecord: 23.9ms | Excon: 70.1ms | Allocations: 295895)
+
+
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:32:29 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>50, "attendees"=>["Pierre"], "rating"=>[5, 10]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (98.88ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=50&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=5&vote_average.lte=10?[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12.5 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "50"], ["language", "{French,NULL}"], ["rating", "{5,10}"], ["user_id", 1], ["created_at", "2021-02-03 16:32:30.060322"], ["updated_at", "2021-02-03 16:32:30.060322"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.067693"], ["updated_at", "2021-02-03 16:32:30.067693"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.073407"], ["updated_at", "2021-02-03 16:32:30.073407"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.079901"], ["updated_at", "2021-02-03 16:32:30.079901"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Breach"], ["overview", "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind."], ["vote_average", "5"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.085515"], ["updated_at", "2021-02-03 16:32:30.085515"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.091417"], ["updated_at", "2021-02-03 16:32:30.091417"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.096718"], ["updated_at", "2021-02-03 16:32:30.096718"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.101972"], ["updated_at", "2021-02-03 16:32:30.101972"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.107219"], ["updated_at", "2021-02-03 16:32:30.107219"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.113722"], ["updated_at", "2021-02-03 16:32:30.113722"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Honest Thief"], ["overview", "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name."], ["vote_average", "6.6"], ["finder_id", 114], ["created_at", "2021-02-03 16:32:30.120558"], ["updated_at", "2021-02-03 16:32:30.120558"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 114]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.7ms | Allocations: 1832)
+Completed 201 Created in 370ms (Views: 3.4ms | ActiveRecord: 13.5ms | Excon: 98.9ms | Allocations: 55495)
+
+
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:32:39 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>50, "attendees"=>["Pierre"], "rating"=>[1, 5]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (98.43ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=50&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=1&vote_average.lte=5?[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.5 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "50"], ["language", "{French,NULL}"], ["rating", "{1,5}"], ["user_id", 1], ["created_at", "2021-02-03 16:32:39.549843"], ["updated_at", "2021-02-03 16:32:39.549843"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.557180"], ["updated_at", "2021-02-03 16:32:39.557180"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.562197"], ["updated_at", "2021-02-03 16:32:39.562197"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.565716"], ["updated_at", "2021-02-03 16:32:39.565716"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Breach"], ["overview", "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind."], ["vote_average", "5"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.568859"], ["updated_at", "2021-02-03 16:32:39.568859"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.573556"], ["updated_at", "2021-02-03 16:32:39.573556"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.578167"], ["updated_at", "2021-02-03 16:32:39.578167"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.583201"], ["updated_at", "2021-02-03 16:32:39.583201"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.587440"], ["updated_at", "2021-02-03 16:32:39.587440"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.590558"], ["updated_at", "2021-02-03 16:32:39.590558"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Honest Thief"], ["overview", "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name."], ["vote_average", "6.6"], ["finder_id", 115], ["created_at", "2021-02-03 16:32:39.593737"], ["updated_at", "2021-02-03 16:32:39.593737"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 115]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.2ms | Allocations: 1758)
+Completed 201 Created in 344ms (Views: 1.3ms | ActiveRecord: 12.0ms | Excon: 98.4ms | Allocations: 55114)
+
+
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:32:42 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>50, "attendees"=>["Pierre"], "rating"=>[1, 5]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (68.07ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=50&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=1&vote_average.lte=5?[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.5 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "50"], ["language", "{French,NULL}"], ["rating", "{1,5}"], ["user_id", 1], ["created_at", "2021-02-03 16:32:42.332377"], ["updated_at", "2021-02-03 16:32:42.332377"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.338899"], ["updated_at", "2021-02-03 16:32:42.338899"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.356663"], ["updated_at", "2021-02-03 16:32:42.356663"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.360275"], ["updated_at", "2021-02-03 16:32:42.360275"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Breach"], ["overview", "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind."], ["vote_average", "5"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.363608"], ["updated_at", "2021-02-03 16:32:42.363608"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.367230"], ["updated_at", "2021-02-03 16:32:42.367230"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.370812"], ["updated_at", "2021-02-03 16:32:42.370812"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.374824"], ["updated_at", "2021-02-03 16:32:42.374824"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.378506"], ["updated_at", "2021-02-03 16:32:42.378506"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.381605"], ["updated_at", "2021-02-03 16:32:42.381605"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Honest Thief"], ["overview", "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name."], ["vote_average", "6.6"], ["finder_id", 116], ["created_at", "2021-02-03 16:32:42.385941"], ["updated_at", "2021-02-03 16:32:42.385941"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 116]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.3ms | Allocations: 1757)
+Completed 201 Created in 191ms (Views: 1.4ms | ActiveRecord: 11.9ms | Excon: 68.1ms | Allocations: 55151)
+
+
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:32:52 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>50, "attendees"=>["Pierre"], "rating"=>[1, 5]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (76.64ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=50&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=1&vote_average.lte=5?[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12.5 KB)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "50"], ["language", "{French,NULL}"], ["rating", "{1,5}"], ["user_id", 1], ["created_at", "2021-02-03 16:32:52.936959"], ["updated_at", "2021-02-03 16:32:52.936959"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.944607"], ["updated_at", "2021-02-03 16:32:52.944607"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.949775"], ["updated_at", "2021-02-03 16:32:52.949775"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.954880"], ["updated_at", "2021-02-03 16:32:52.954880"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Breach"], ["overview", "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind."], ["vote_average", "5"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.959837"], ["updated_at", "2021-02-03 16:32:52.959837"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.963596"], ["updated_at", "2021-02-03 16:32:52.963596"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.967018"], ["updated_at", "2021-02-03 16:32:52.967018"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.970255"], ["updated_at", "2021-02-03 16:32:52.970255"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.974268"], ["updated_at", "2021-02-03 16:32:52.974268"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.977606"], ["updated_at", "2021-02-03 16:32:52.977606"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Honest Thief"], ["overview", "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name."], ["vote_average", "6.6"], ["finder_id", 117], ["created_at", "2021-02-03 16:32:52.980801"], ["updated_at", "2021-02-03 16:32:52.980801"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 117]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.2ms | Allocations: 1758)
+Completed 201 Created in 181ms (Views: 1.3ms | ActiveRecord: 12.8ms | Excon: 76.7ms | Allocations: 55182)
+
+
+Started POST "/api/v1/finders?{%20%22finder%22=%20{&%22release%22=%202021,&%22duration%22=%2050,&%22attendees%22=%20[%22Pierre%22],&%22rating%22=%20[5,%2010]&}}=" for ::1 at 2021-02-03 16:33:27 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>1900, "duration"=>100, "attendees"=>["Pierre"], "rating"=>[1, 5]}, "{ \"finder\""=>" {", "\"release\""=>" 2021,", "\"duration\""=>" 50,", "\"attendees\""=>" [\"Pierre\"],", "\"rating\""=>" [5, 10]", "}}"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (98.05ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&with_runtime.gte=100&primary_release_date.gte=1900-01-01&vote_count.gte=100&vote_average.gte=1&vote_average.lte=5?[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (11.7 KB)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "1900"], ["duration", "100"], ["language", "{French,NULL}"], ["rating", "{1,5}"], ["user_id", 1], ["created_at", "2021-02-03 16:33:27.871903"], ["updated_at", "2021-02-03 16:33:27.871903"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:48:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.878743"], ["updated_at", "2021-02-03 16:33:27.878743"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Outside the Wire"], ["overview", "In the near future, a drone pilot is sent into a deadly militarized zone and must work with an android officer to locate a doomsday device."], ["vote_average", "6.5"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.884040"], ["updated_at", "2021-02-03 16:33:27.884040"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Soul"], ["overview", "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth."], ["vote_average", "8.3"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.889586"], ["updated_at", "2021-02-03 16:33:27.889586"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Skylines"], ["overview", "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity."], ["vote_average", "5.8"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.895220"], ["updated_at", "2021-02-03 16:33:27.895220"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Godzilla: King of the Monsters"], ["overview", "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance."], ["vote_average", "6.6"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.900455"], ["updated_at", "2021-02-03 16:33:27.900455"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "백두산"], ["overview", "Stagnant since 1903, at an elevation of 9000', a volcano erupts on the mythical and majestic Baekdu Mountain."], ["vote_average", "6.8"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.906232"], ["updated_at", "2021-02-03 16:33:27.906232"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ava"], ["overview", "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong."], ["vote_average", "5.6"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.911682"], ["updated_at", "2021-02-03 16:33:27.911682"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "急先锋"], ["overview", "Covert security company Vanguard is the last hope of survival for an accountant after he is targeted by the world's deadliest mercenary organization."], ["vote_average", "6.7"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.916971"], ["updated_at", "2021-02-03 16:33:27.916971"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)"], ["overview", "Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord."], ["vote_average", "7.1"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.922033"], ["updated_at", "2021-02-03 16:33:27.922033"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Tenet"], ["overview", "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time."], ["vote_average", "7.3"], ["finder_id", 118], ["created_at", "2021-02-03 16:33:27.925681"], ["updated_at", "2021-02-03 16:33:27.925681"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 118]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.7ms | Allocations: 1758)
+Completed 201 Created in 349ms (Views: 1.8ms | ActiveRecord: 14.0ms | Excon: 98.1ms | Allocations: 54819)
+
+

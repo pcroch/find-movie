@@ -151,9 +151,10 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def find_country(minrel, mindur, vote, minrat, maxrat, gen)
+    minrel_full = "#{minrel}-01-01"
     key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
     request_api(
-      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel}&vote_count.gte=#{vote}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}?"
+      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel_full}&vote_count.gte=#{vote}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}?"
     )
   end
 end
