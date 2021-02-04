@@ -1,6 +1,3 @@
-require 'pry'
-require 'rubygems'
-require 'excon'
 class Api::V1::FindersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [:index, :show]
   before_action :set_finder, only: [:show, :update, :destroy]
@@ -63,8 +60,7 @@ class Api::V1::FindersController < Api::V1::BaseController
 
   def destroy
     @finder.destroy
-    head :no_content
-    # No need to create a `destroy.json.jbuilder` view
+    head :no_content # No need to create a `destroy.json.jbuilder` view
   end
 
   private
