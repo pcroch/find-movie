@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.extract! @finder, :id, :release
 
 json.movies @finder.movies do |movie|

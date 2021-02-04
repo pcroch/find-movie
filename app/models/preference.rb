@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Preference < ApplicationRecord
   has_many :preference_finders
   has_many :finders, through: :preference_finders
