@@ -17,12 +17,15 @@ Validatio done through the controller?
 Yes 
 And partioally through the model
 
-https://movie-api-finder.herokuapp.com/ for the api
+    https://movie-api-finder.herokuapp.com/ for the api
 
-get https://movie-api-finder.herokuapp.com/api/v1/finders index
-get https://movie-api-finder.herokuapp.com/api/v1/finders/:id show
-post https://movie-api-finder.herokuapp.com/api/v1/finders/:id create
-  Body: { "finder": { 
+    get https://movie-api-finder.herokuapp.com/api/v1/finders index
+
+    get https://movie-api-finder.herokuapp.com/api/v1/finders/:id show
+
+    post https://movie-api-finder.herokuapp.com/api/v1/finders/:id create
+
+    Body: { "finder": { 
         "release": 1990,
         "duration": 1,
         "attendees": ["Bob"],
