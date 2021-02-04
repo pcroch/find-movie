@@ -1,4 +1,6 @@
 require 'pry'
+require 'rubygems'
+require 'excon'
 class Api::V1::FindersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [:index, :show]
   before_action :set_finder, only: [:show, :update, :destroy]
@@ -23,7 +25,7 @@ class Api::V1::FindersController < Api::V1::BaseController
     # binding.pry
     # render json: { error: "No movie found" }, status: :not_found if finder_params[:rating].nil?
     find_genre_id
-     # binding.pry
+
     hash_params = { min_release: finder_params[:release],
                     min_duration: finder_params[:duration],
                     vote_count: 100,
@@ -39,12 +41,14 @@ class Api::V1::FindersController < Api::V1::BaseController
                  hash_params[:min_rating],
                  hash_params[:max_rating],
                  hash_params[:genre])
+
     @finder = Finder.new({ 'release' => hash_params[:min_release],
                            'duration' => hash_params[:min_duration],
                            'language' => ["French", hash_params[:movie_title]],
                            'rating' => [hash_params[:min_rating], hash_params[:max_rating]] })
     @finder.user = current_user
     authorize @finder
+
     if @finder.save
       upper_limit
     # while @body["results"].count < 10
@@ -114,11 +118,13 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def upper_limit
-    if @body['results'].count.zero?
+# binding.pry
+    if  @body.nil?
+      # @body['results'].count.zero? # previous but useless in LT
       empty_request # call emtpy request method in parent
 
     else
-      @body['results'].count < 10 ? (upper_limit = body['results'].count) : (upper_limit = 10)
+      @body['results'].count < 10 ? (upper_limit = @body['results'].count) : (upper_limit = 10)
       i = 0
       # while i < 10
       while i < upper_limit
@@ -143,19 +149,12 @@ class Api::V1::FindersController < Api::V1::BaseController
     # to 10. So I will run again that function and will have a new choice
   end
 
-  def request_api(url)
-    response = Excon.get(url)
-    return nil if response.status != 200
-
-    @body = JSON.parse(response.body)
-  end
-
   def find_country(minrel, mindur, vote, minrat, maxrat, gen)
     minrel_full = "#{minrel}-01-01"
     key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
-    request_api(
-      "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel_full}&vote_count.gte=#{vote}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}?"
-    )
+    url = "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel_full}&vote_count.gte=#{vote}"
+    response = Excon.get(url)
+    @body = JSON.parse(response.body)
   end
 end
 
