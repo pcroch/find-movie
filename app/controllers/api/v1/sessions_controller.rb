@@ -5,15 +5,15 @@ class Api::V1::SessionsController < Devise::SessionsController
   def create
     # is that controller usefull?
     if @user.valid_password?(sign_in_params[:password])
-      sign_in "user", @user
+      sign_in 'user', @user
       render json: {
-        messages: "Signed In Successfully",
+        messages: 'Signed In Successfully',
         is_success: true,
-        data: {user: @user}
+        data: { user: @user }
       }, status: :ok
     else
       render json: {
-        messages: "Signed In Failed - Unauthorized",
+        messages: 'Signed In Failed - Unauthorized',
         is_success: false,
         data: {}
       }, status: :unauthorized
@@ -21,21 +21,18 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   private
+
   def sign_in_params
     params.require(:sign_in).permit :email, :password
   end
 
   def load_user
     @user = User.find_for_database_authentication(email: sign_in_params[:email])
-    if @user
-      return @user
-    else
-      render json: {
-        messages: "Cannot get User",
-        is_success: false,
-        data: {}
-      }, status: :failure
-    end
+    @user || render(json: {
+                      messages: 'Cannot get User',
+                      is_success: false,
+                      data: {}
+                    }, status: :failure)
   end
 end
 # view rawsessions_controller.rb hosted with ❤ by GitHub

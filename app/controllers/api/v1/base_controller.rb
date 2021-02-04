@@ -20,7 +20,7 @@ class Api::V1::BaseController < ActionController::API
     render json: { error: exception.message }, status: :not_found
   end
 
-    def empty_request
-    render json: { error: "No movie found" }, status: :not_found
+  def empty_request
+    render json: { error: 'No movie found' }, status: :not_found
   end
 end

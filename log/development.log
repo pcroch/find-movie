@@ -35778,3 +35778,128 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 404 Not Found in 295ms (Views: 0.1ms | ActiveRecord: 10.0ms | Excon: 105.0ms | Allocations: 242433)
 
 
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 13:12:21 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2020, "duration"=>240, "rating"=>[1, 10], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (107.11ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=10&with_runtime.gte=240&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[36mFinder Create (0.5ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "240"], ["language", "{French,NULL}"], ["rating", "{1,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:12:22.103894"], ["updated_at", "2021-02-04 13:12:22.103894"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+Completed 404 Not Found in 401ms (Views: 0.1ms | ActiveRecord: 9.1ms | Excon: 107.1ms | Allocations: 242081)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 13:23:50 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2020, "duration"=>210, "rating"=>[1, 10], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (100.86ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=10&with_runtime.gte=210&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "210"], ["language", "{French,NULL}"], ["rating", "{1,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:23:51.130247"], ["updated_at", "2021-02-04 13:23:51.130247"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+Completed 404 Not Found in 280ms (Views: 0.1ms | ActiveRecord: 1.7ms | Excon: 100.9ms | Allocations: 12709)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 13:23:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2020, "duration"=>200, "rating"=>[1, 10], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:101:in `matching_preferences'
+  [1m[34mExcon Request[0m (73.35ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (669 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "200"], ["language", "{French,NULL}"], ["rating", "{1,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:23:55.601056"], ["updated_at", "2021-02-04 13:23:55.601056"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:49:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 190], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Possessor Uncut"], ["overview", "Tasya Vos, an elite corporate assassin, uses brain-implant technology to take control of other people’s bodies to terminate high profile targets. As she sinks deeper into her latest assignment, Vos becomes trapped inside a mind that threatens to obliterate her."], ["vote_average", "6.6"], ["finder_id", 190], ["created_at", "2021-02-04 13:23:55.621171"], ["updated_at", "2021-02-04 13:23:55.621171"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:129:in `upper_limit'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 190]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 3.9ms | Allocations: 3162)
+Completed 201 Created in 282ms (Views: 4.9ms | ActiveRecord: 7.3ms | Excon: 73.4ms | Allocations: 31405)
+
+
+Started GET "/api/v1/finders/9999" for ::1 at 2021-02-04 13:48:47 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"9999"}
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 9999], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:70:in `set_finder'
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1330)
+
+
+Started GET "/api/v1/finders/1" for ::1 at 2021-02-04 13:48:52 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:70:in `set_finder'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.8ms | Allocations: 1099)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.6ms | Allocations: 2126)
+
+
+  [1m[36mFinder Load (0.7ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:52:04.927625"], ["updated_at", "2021-02-04 13:52:04.927625"]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/finders/1" for ::1 at 2021-02-04 13:52:47 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:70:in `set_finder'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.0ms | Allocations: 1096)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 2105)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:54:01.073608"], ["updated_at", "2021-02-04 13:54:01.073608"]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.8ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:55:51.662752"], ["updated_at", "2021-02-04 13:55:51.662752"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1000], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-04 13:57:35.203276"], ["updated_at", "2021-02-04 13:57:35.203276"]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/finders/1000" for ::1 at 2021-02-04 13:57:53 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1000"}
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1000], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/finders_controller.rb:70:in `set_finder'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1000]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.5ms | Allocations: 927)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.5ms | Allocations: 1936)
+
+

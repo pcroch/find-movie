@@ -19,7 +19,7 @@ class PreferencePolicy < ApplicationPolicy
   end
 
   def destroy?
-      # record.user == user
-      update?
+    # record.user == user
+    update?
   end
 end

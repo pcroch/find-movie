@@ -1,6 +1,6 @@
 class Api::V1::FindersController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [:index, :show]
-  before_action :set_finder, only: [:show, :update, :destroy]
+  acts_as_token_authentication_handler_for User, except: %i[index show]
+  before_action :set_finder, only: %i[show update destroy]
 
   def index
     @finders = policy_scope(Finder)
@@ -19,7 +19,6 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
-
     # render json: { error: "No movie found" }, status: :not_found if finder_params[:rating].nil?
     find_genre_id
 
@@ -41,7 +40,7 @@ class Api::V1::FindersController < Api::V1::BaseController
 
     @finder = Finder.new({ 'release' => hash_params[:min_release],
                            'duration' => hash_params[:min_duration],
-                           'language' => ["French", hash_params[:movie_title]],
+                           'language' => ['French', hash_params[:movie_title]],
                            'rating' => [hash_params[:min_rating], hash_params[:max_rating]] })
     @finder.user = current_user
     authorize @finder
@@ -91,7 +90,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   def matching_preferences
     # find the matching preferences
     i = 0
-    j = (finder_params['attendees'].count)
+    j = finder_params['attendees'].count
     @preferences = []
     while i < j
 
@@ -108,13 +107,12 @@ class Api::V1::FindersController < Api::V1::BaseController
 
       # create an has: count with the number of ocurance for each movie category
       # @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
-      @counts = @preferences.each_with_object(Hash.new(0)) { |e, total| total[e] += 1}
+      @counts = @preferences.each_with_object(Hash.new(0)) { |e, total| total[e] += 1 }
       i += 1
     end
   end
 
   def upper_limit
-
     if @body.nil? || @body['results'].count.zero?
       empty_request # call emtpy request method in parent
     else
@@ -145,11 +143,9 @@ class Api::V1::FindersController < Api::V1::BaseController
 
   def find_country(minrel, mindur, vote, minrat, maxrat, gen)
     minrel_full = "#{minrel}-01-01"
-    key = "15d2ea6d0dc1d476efbca3eba2b9bbfb"
+    key = '15d2ea6d0dc1d476efbca3eba2b9bbfb'
     url = "https://api.themoviedb.org/3/discover/movie?api_key=#{key}&page=1&with_genres=#{gen}&vote_average.gte=#{minrat}&vote_average.lte=#{maxrat}&with_runtime.gte=#{mindur}&primary_release_date.gte=#{minrel_full}&vote_count.gte=#{vote}"
     response = Excon.get(url)
     @body = JSON.parse(response.body)
   end
 end
-
-
