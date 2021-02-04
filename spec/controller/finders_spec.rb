@@ -41,7 +41,7 @@ RSpec.describe 'Integration testing', type: :request do
     it 'should have the same id and release year' do
       json_response = JSON.parse(response.body)
       expect(json_response['id']).to eq(1)
-      expect(json_response['release']).to eq("2020")
+      expect(json_response['release']).to eq('2020')
     end
 
     it 'should return status code created 200' do
