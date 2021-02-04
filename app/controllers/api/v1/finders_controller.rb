@@ -22,7 +22,7 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def create
-    # binding.pry
+
     # render json: { error: "No movie found" }, status: :not_found if finder_params[:rating].nil?
     find_genre_id
 
@@ -118,11 +118,9 @@ class Api::V1::FindersController < Api::V1::BaseController
   end
 
   def upper_limit
-# binding.pry
-    if  @body.nil?
-      # @body['results'].count.zero? # previous but useless in LT
-      empty_request # call emtpy request method in parent
 
+    if @body.nil? || @body['results'].count.zero?
+      empty_request # call emtpy request method in parent
     else
       @body['results'].count < 10 ? (upper_limit = @body['results'].count) : (upper_limit = 10)
       i = 0

@@ -35700,3 +35700,63 @@ Processing by Api::V1::FindersController#create as JSON
 Completed 201 Created in 329ms (Views: 2.4ms | ActiveRecord: 13.6ms | Excon: 75.5ms | Allocations: 55028)
 
 
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 12:00:07 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2009, "duration"=>200, "rating"=>[1, 2], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:105:in `matching_preferences'
+  [1m[34mExcon Request[0m (99.38ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=2&with_runtime.gte=200&primary_release_date.gte=2009-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2009"], ["duration", "200"], ["language", "{French,NULL}"], ["rating", "{1,2}"], ["user_id", 1], ["created_at", "2021-02-04 12:00:08.381838"], ["updated_at", "2021-02-04 12:00:08.381838"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 184]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 4.0ms | Allocations: 4821)
+Completed 201 Created in 386ms (Views: 4.3ms | ActiveRecord: 8.3ms | Excon: 99.4ms | Allocations: 247899)
+
+
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 12:00:26 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2009, "duration"=>200, "rating"=>[1, 2], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:105:in `matching_preferences'
+  [1m[34mExcon Request[0m (111.61ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=2&with_runtime.gte=200&primary_release_date.gte=2009-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2009"], ["duration", "200"], ["language", "{French,NULL}"], ["rating", "{1,2}"], ["user_id", 1], ["created_at", "2021-02-04 12:00:26.663688"], ["updated_at", "2021-02-04 12:00:26.663688"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+Started POST "/api/v1/finders" for ::1 at 2021-02-04 12:00:58 +0000
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 185]]
+  ↳ app/views/api/v1/finders/show.json.jbuilder:4
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 8.2ms | Allocations: 6992)
+Completed 201 Created in 35575ms (Views: 7.7ms | ActiveRecord: 11.3ms | Excon: 111.6ms | Allocations: 596680)
+
+
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>2009, "duration"=>200, "rating"=>[1, 2], "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pierre@pierre.pierre"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Pierre"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:105:in `matching_preferences'
+  [1m[34mExcon Request[0m (74.02ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=&vote_average.gte=1&vote_average.lte=2&with_runtime.gte=200&primary_release_date.gte=2009-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2009"], ["duration", "200"], ["language", "{French,NULL}"], ["rating", "{1,2}"], ["user_id", 1], ["created_at", "2021-02-04 12:01:02.239471"], ["updated_at", "2021-02-04 12:01:02.239471"]]
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/finders_controller.rb:52:in `create'
+Completed 404 Not Found in 170ms (Views: 0.2ms | ActiveRecord: 9.7ms | Excon: 74.0ms | Allocations: 33915)
+
+
