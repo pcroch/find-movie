@@ -46,10 +46,10 @@ Basically, my api will render a list one ten movies maximum based on the followi
        
       This is an example of a  raw body request
 
-## III. Technical description
+### III. HOW TO
 
 
-### Sign-up the API
+#### Sign-up the API
   When you sin in, you **MUST** keep the authentication_token otherwise you won't be able to sign when create new event.
   
   
@@ -87,11 +87,12 @@ Basically, my api will render a list one ten movies maximum based on the followi
     }
     }
 
-### Index Action: Get of the db
-
-      curl https://movie-api-finder.herokuapp.com/api/v1/finders
+#### Index Action: Get of the db
+  Fetch:
+            
+    curl https://movie-api-finder.herokuapp.com/api/v1/finders
       
-     It will render:
+  Render: 
       
       [
     {
@@ -121,16 +122,16 @@ Basically, my api will render a list one ten movies maximum based on the followi
       ]    
 
 
-Know bug:
-valiadtion of datas
 
 
 #### Show Action: Get a specific event on the db
-
+  Fetch:
     curl https://movie-api-finder.herokuapp.com/api/v1/finders/:id 
     
     Where id is the id of the event. It must be an integer
-    If id = 1, it will render for example:
+ Render:  
+      
+    if id: 1
     
     {
     "id": 1,
@@ -150,19 +151,27 @@ valiadtion of datas
 }
     
 
-### Create Action: create an event via a post reauest
-   You need to be authenticated and of course have the authorization. It is granted when you sign in
-    The headers must be filled as mentionned above.
+#### Create Action: create an event via a post reauest
+   You need to be authenticated and of course have the authorization. It is granted when you sign up.
+
+Fetch: 
+   
     post https://movie-api-finder.herokuapp.com/api/v1/finders 
     
-    headers: see  "How to fetch" subsection
-    Body: { "finder": { 
+    Headers:
+        Content-Type    application/json
+        X-User-Email    pierre@pierre.pierre
+        X-User-Token    KdapjiY6vz-sBkKmNieF
+        
+    Body: 
+        { "finder": { 
         "release": 2020,
         "duration": 190,
         "attendees": ["Bob"],
         "rating": [0,1,3, 1] } }
         
-     It will render:   
+Render:   
+         
          {
           "id": 200,
           "release": "2020",
@@ -175,10 +184,32 @@ valiadtion of datas
           ]
       } 
         
+### B- Cross-origin resource sharing        
         
-        
+(CORS) is already setup and so the api is ready to be used in production.
 
+### C- Error rendering description:
+
+Coming soon
 improving the rendering in index, show and create as some variable are no longer used anymore
 testing to end and model valdiation too
 
+## III. Testing description
 
+Coming soon
+
+
+## IV. Waht next?
+
+### A- To do list:
+
+      valiadtion of datas for duration and attendees
+      CORS end set up
+      index rendering removing language
+      creating an admin with full right to delete
+      testing destroy and update
+      end descripton of test case
+      
+### B- Know bug + Description:
+      
+      valiadtion of datas for duration and attendees> If blank, the api crash...
