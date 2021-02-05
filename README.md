@@ -17,24 +17,33 @@ Basically, my api will render a list one ten movies maximum based on the followi
     Production: https://movie-api-finder.herokuapp.com/api/v1/finders
     In testing: URL: http://localhost:3000/api/v1/finders
  
-### How to fetch:  
+### Installation:  
 
+  
     1 * launch and install the rails server with the following command:
         git clone git@github.com:pcroch/
         cd bfinder-movie 
         yarn install && bundle install
         rails db:create db:migrate db:seed
         rails s
+        
+### How to fetch:  
 
-
-    2 * Execute the following command with the desire params: 
-
-
-
-
-
-
-
+    1 * Headers:
+        Content-Type    application/json
+        X-User-Email    pierre@pierre.pierre
+        X-User-Token    KdapjiY6vz-sBkKmNieF
+        
+     This is a default user to demonstration.
+     
+    1 * Body: 
+     For example: A raw body request
+      { "finder": {
+        "release": 2008,
+        "duration": 90,
+        "rating": [1, 10],
+        "attendees": ["Pierre"]
+       }}
 
 Know bug:
 valiadtion of datas
