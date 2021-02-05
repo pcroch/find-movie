@@ -53,24 +53,13 @@ Basically, my api will render a list one ten movies maximum based on the followi
   When you sin in, you **MUST** keep the authentication_token otherwise you won't be able to sign when create new event.
   
   
-  Fetch:
-      
-      curl  localhost:3000/api/v1/sign_up
-      Header: 
-      
-         Content-Type      application/json
-           
-      Body : 
-      {
-       "user": {
-        "email":"4444@example.com",
-        "password":"password",
-        "password_confirmation":"password",
-            "user_name": "qwerty"
-       }
-      }
-
-   Render: 
+  Fetch: 
+  
+      curl -i -X POST                                                                                                                     \
+            -H 'Content-Type      application/json'                                                                                       \
+            -d '{"user": {"email":"4444@example.com","password":"password", "password_confirmation":"password", "user_name": "qwerty" }}' \
+            localhost:3000/api/v1/sign_up
+  Render: 
       
       {
     "messages": "Sign Up Successfully",
