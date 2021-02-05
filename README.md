@@ -198,7 +198,7 @@ testing to end and model valdiation too
 ### A- To do list:
 
       valiadtion of datas for duration and attendees
-      CORS end set up
+      Cors testing the setup
       index rendering removing language
       creating an admin with full right to delete
       testing destroy and update
