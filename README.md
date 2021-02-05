@@ -34,16 +34,20 @@ Basically, my api will render a list one ten movies maximum based on the followi
         X-User-Email    pierre@pierre.pierre
         X-User-Token    KdapjiY6vz-sBkKmNieF
         
-     This is a default user to demonstration.
+     This is a default user to demonstration. You can of course create your own user. PLease see below.
      
-    1 * Body: 
-     For example: A raw body request
-      { "finder": {
+    2 * Body: 
+       { "finder": {
         "release": 2008,
         "duration": 90,
         "rating": [1, 10],
         "attendees": ["Pierre"]
        }}
+       
+      This is an example of a  raw body request
+
+### III. Technical description
+
 
 Know bug:
 valiadtion of datas
