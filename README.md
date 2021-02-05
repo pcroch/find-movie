@@ -27,7 +27,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
         rails s
 
 
-
+    2 * Execute the following command with the desire params: 
 
 
 
