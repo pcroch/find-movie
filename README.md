@@ -90,7 +90,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 #### Index Action: Get of the db
   Fetch:
             
-    curl https://movie-api-finder.herokuapp.com/api/v1/finders
+    curl -s https://movie-api-finder.herokuapp.com/api/v1/finders | jq
       
   Render: 
       
@@ -126,8 +126,8 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 #### Show Action: Get a specific event on the db
   Fetch:
-    curl https://movie-api-finder.herokuapp.com/api/v1/finders/:id 
-    
+  
+    curl -s https://movie-api-finder.herokuapp.com/api/v1/finder/:id | jq
     Where id is the id of the event. It must be an integer
  Render:  
       
@@ -156,20 +156,12 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 Fetch: 
    
-    post https://movie-api-finder.herokuapp.com/api/v1/finders 
-    
-    Headers:
-        Content-Type    application/json
-        X-User-Email    pierre@pierre.pierre
-        X-User-Token    KdapjiY6vz-sBkKmNieF
-        
-    Body: 
-        { "finder": { 
-        "release": 2020,
-        "duration": 190,
-        "attendees": ["Bob"],
-        "rating": [0,1,3, 1] } }
-        
+    curl -i -X POST 
+        -H 'Content-Type    application/json'                                                           \
+        -H 'X-User-Email    pierre@pierre.pierre'                                                       \
+        -H 'X-User-Token    KdapjiY6vz-sBkKmNieF'                                                       \
+        -d '{ "finder": {"release": 2020,"duration": 190,"attendees": ["Bob"],"rating": [0,1,3, 1] } }' \
+        https://movie-api-finder.herokuapp.com/api/v1/finders 
 Render:   
          
          {
