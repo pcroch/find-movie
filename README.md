@@ -85,7 +85,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
             "authentication_token": "4xxvRjtXFUPPMubjs94t"
         }
     }
-}
+    }
 
 ### Index Action: Get of the db
 
