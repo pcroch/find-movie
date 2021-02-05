@@ -177,10 +177,23 @@ testing to end and model valdiation too
 
 ## III. Testing description
 
-Coming soon
+### A- Run the test:
 
+      Run: bundle exec rspec 
+      Alternatively run: rake
+  
+      It will launch the Unit testing and Integration testing
 
-## IV. Waht next?
+### B- Integration Testing Description
+      Some testing are already setup for the finders controller and some models.
+      
+      More information will coming soon
+      
+### C- Unit Testing Description
+
+      Coming soon
+
+## IV. What next?
 
 ### A- To do list:
 
