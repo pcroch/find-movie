@@ -51,6 +51,8 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 ### Sign-up the API
   When you sin in, you **MUST** keep the authentication_token otherwise you won't be able to sign when create new event.
+  
+  
   Fetch:
       
       curl  localhost:3000/api/v1/sign_up
