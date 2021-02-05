@@ -1,21 +1,44 @@
 The documents will come soon
 
-Description
+# Api description: An api to find mvoeis based to criteria
 
-Testing
+## I. General description
+
+Basically, my api will render a list one ten movies maximum based on the following criterias: Year of release, the rating range, your tastes, the others attendees tastes. My api uses an external api to discover movies based on those criterias.
+
+## II. Technical description
+
+### Current version: 
+
+      Version 1 is actually the production one.
+
+### End-points: 
+    
+    Production: https://movie-api-finder.herokuapp.com/api/v1/finders
+    In testing: URL: http://localhost:3000/api/v1/finders
+ 
+### How to fetch:  
+
+    1 * launch and install the rails server with the following command:
+        git clone git@github.com:pcroch/bonus_malus.git
+        cd bonus_malus 
+        yarn install && bundle install
+        rails db:create db:migrate
+        rails s
 
 
-For rating params, only the two first value are take into account -> solved and validation through model now
+
+
+
+
+
+
 
 
 
 Know bug:
-rendering the previous request if the API fetch an empty json==> the gem must be the issue
-Validation in rating and attenddes, if blank, API reponsd a 400 message bcse Date format is wrong: should be yyyy-mm-dd instead of yyyy
+valiadtion of datas
 
-Validatio done through the controller?
-Yes 
-And partioally through the model
 
     https://movie-api-finder.herokuapp.com/ for the api
 
