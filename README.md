@@ -46,7 +46,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
        
       This is an example of a  raw body request
 
-### III. HOW TO
+## III. HOW TO
 
 
 #### Sign-up the API
