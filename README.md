@@ -203,6 +203,7 @@ testing to end and model valdiation too
       creating an admin with full right to delete
       testing destroy and update
       end descripton of test case
+      adding an event name and searching  via the name
       
 ### B- Know bug + Description:
       
