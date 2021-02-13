@@ -3,13 +3,14 @@
 module Api
   module V1
     class FindersController < Api::V1::BaseController
+      # caches_page :index
       acts_as_token_authentication_handler_for User, except: %i[index show]
       before_action :set_finder, only: %i[show update destroy]
 
       def index
         @finders = policy_scope(Finder)
-
         @movies = Movie.where(finder_id: @finders)
+        expires_in 30.minutes, public: true
       end
 
       def show; end

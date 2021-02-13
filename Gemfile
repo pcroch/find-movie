@@ -77,3 +77,10 @@ gem 'excon-rails', '~> 1.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
+# Memcached
+gem 'dalli'
+# gem 'memcached'
+
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'

@@ -18,6 +18,8 @@ module FindMovie
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.autoloader = :classic
+    config.active_record.cache_versioning = true
+    config.active_record.collection_cache_versioning = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
