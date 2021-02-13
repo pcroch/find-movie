@@ -202,7 +202,8 @@ testing to end and model valdiation too
 - [ ] creating an admin with full right to delete
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
-- [ ] Memcache
+- [x] Memcache - get
+- [] Memcache - paging
 
 
 
