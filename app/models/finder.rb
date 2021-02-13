@@ -10,4 +10,6 @@ class Finder < ApplicationRecord
   validates :release, format: { with: /\d{4}/, message: ': The integer must be a 4 digits' }, presence: true
   # validates :attendees, presence: true
   validates :rating, presence: true
+
+
 end

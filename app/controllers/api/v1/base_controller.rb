@@ -4,6 +4,7 @@
 module Api
   module V1
     class BaseController < ActionController::API
+      include ActionController::Caching
       include Pundit
 
       after_action :verify_authorized, except: :index
