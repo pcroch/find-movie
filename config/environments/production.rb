@@ -113,5 +113,5 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_controller.page_cache_directory = Rails.root.join "public/cached_pages"
+  # config.action_controller.page_cache_directory = Rails.root.join "public/cached_pages"
 end
