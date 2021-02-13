@@ -195,16 +195,4 @@ testing to end and model valdiation too
 
 ## IV. What next?
 
-### A- To do list:
-
-      valiadtion of datas for duration and attendees
-      Cors testing the setup
-      index rendering removing language
-      creating an admin with full right to delete
-      testing destroy and update
-      end descripton of test case
-      adding an event name and searching  via the name
-      
-### B- Know bug + Description:
-      
-      valiadtion of datas for duration and attendees> If blank, the api crash...
+      See issue tab of the project
