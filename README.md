@@ -1,6 +1,6 @@
 The documents will come soon
 
-# Api description: An api to find movies based to criteria
+# Api description: An api to find movies based on criteria
 
 ## I. General description
 
