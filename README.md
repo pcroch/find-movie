@@ -203,7 +203,7 @@ testing to end and model valdiation too
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
 - [x] Memcache - get
-- [ ] Memcache - paging
+- [x] Memcache - paging
 
 
 
