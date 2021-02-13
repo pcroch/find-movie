@@ -20,6 +20,7 @@ module FindMovie
     config.autoloader = :classic
     config.active_record.cache_versioning = true
     config.active_record.collection_cache_versioning = true
+    config.cache_store = :mem_cache_store
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
