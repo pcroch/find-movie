@@ -82,3 +82,4 @@ gem 'rack-cors'
 gem 'dalli'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+
