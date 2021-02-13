@@ -80,7 +80,5 @@ gem 'rack-cors'
 
 # Memcached
 gem 'dalli'
-# gem 'memcached'
-
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
