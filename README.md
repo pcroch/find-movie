@@ -195,4 +195,14 @@ testing to end and model valdiation too
 
 ## IV. What next?
 
-      See issue tab of the project
+### A- To do list
+
+- [ ] adding an event name and searching via the name
+- [ ] end descripton of test case
+- [ ] creating an admin with full right to delete
+- [ ] Cors testing the setup
+- [ ] validation of data for duration and attendees
+- [ ] Memcache
+
+
+
