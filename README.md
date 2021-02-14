@@ -171,8 +171,8 @@ Render:
 ### C- Error rendering description:
 
 Coming soon
-improving the rendering in index, show and create as some variable are no longer used anymore
-testing to end and model valdiation too
+
+
 
 ## III. Testing description
 
@@ -203,6 +203,7 @@ testing to end and model valdiation too
 - [ ] validation of data for duration and attendees
 - [ ] Memcache - get - check again
 - [ ] Memcache - paging - check again
+- [ ] Improving the rendering in index, show and create
 
 
 
