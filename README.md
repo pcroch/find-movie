@@ -201,8 +201,8 @@ Coming soon
 - [ ] creating an admin with full right to delete
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
-- [ ] Memcache - get - check again
-- [ ] Memcache - paging - check again
+- [x] Memcache - get - check again
+- [x] Memcache - paging - check again
 - [ ] Improving the rendering in index, show and create
 
 
