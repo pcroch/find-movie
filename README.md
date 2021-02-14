@@ -4,13 +4,13 @@ The documents will come soon
 
 ## I. General description
 
-Basically, my api will render a list one ten movies maximum based on the following criterias: Year of release, the rating range, your tastes, the others attendees tastes. My api uses an external api to discover movies based on those criterias.
+Basically, my api will render a list one ten movies maximum based on the following criterias: Year of release, the rating range, your tastes, the others attendees tastes. My api uses an external api to discover movies based on those criteria.
 
 ## II. Technical description
 
 ### Current version: 
 
-      Version 1 is actually the production one.
+      Version 1 is actually the one in production.
 
 ### End-points: 
     
@@ -48,9 +48,8 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 ## III. HOW TO
 
-
 #### Sign-up the API
-  When you sin in, you **MUST** keep the authentication_token otherwise you won't be able to sign when creating new event.
+  When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event.
   
   
   Fetch: 
