@@ -50,7 +50,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 ## III. HOW TO
 
 #### Sign-up the API
-  When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event.
+  When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event. It will look like this *"authentication_token": "4xxvRjtXFUPPMubjs94t"*
   
   
   Fetch: 
