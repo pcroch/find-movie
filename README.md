@@ -13,9 +13,10 @@ Basically, my api will render a list one ten movies maximum based on the followi
       Version 1 is actually the one in production.
 
 ### End-points: 
-    
-    Production: https://movie-api-finder.herokuapp.com/api/v1/finders
-    In testing: URL: http://localhost:3000/api/v1/finders
+  
+   Production: https://movie-api-finder.herokuapp.com/api/v1/finders
+   
+   Locally:  http://localhost:3000/api/v1/finders
  
 ### Installation:  
 
@@ -49,7 +50,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 ## III. HOW TO
 
 #### Sign-up the API
-  When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event.
+  When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event. It will look like this *"authentication_token": "4xxvRjtXFUPPMubjs94t"*
   
   
   Fetch: 
@@ -115,8 +116,11 @@ Basically, my api will render a list one ten movies maximum based on the followi
 #### Show Action: Get a specific event on the db
   Fetch:
   
+   Where id is the id of the event. It must be an integer
+   
     curl -s https://movie-api-finder.herokuapp.com/api/v1/finder/:id | jq
-    Where id is the id of the event. It must be an integer
+        
+         
  Render:  
       
     if id: 1
@@ -168,7 +172,13 @@ Render:
         
 (CORS) is already setup and so the api is ready to be used in production.
 
-### C- Error rendering description:
+### C- Caching       
+        
+There is cache only for two actions: Index & Show as there is no need for authentication for those actions.
+
+The index action has a cache of 3 minutes and the Show action has a cache of 1 minute. Which means that you have to wait a while to see the change actually being seen on the json reponse.
+
+### D- Error rendering description:
 
 Coming soon
 
