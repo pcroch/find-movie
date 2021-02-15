@@ -34,19 +34,19 @@ module Api
         matching_preferences
         choice_count
 
+        @finder = Finder.new({ 'release' => hash_params[:min_release],
+                               'duration' => hash_params[:min_duration],
+                               'language' => ['French'],
+                               'rating' => [hash_params[:min_rating], hash_params[:max_rating]] })
+        @finder.user = current_user
+        authorize @finder
+
         find_country(hash_params[:min_release],
                      hash_params[:min_duration],
                      hash_params[:vote_count],
                      hash_params[:min_rating],
                      hash_params[:max_rating],
                      hash_params[:genre])
-
-        @finder = Finder.new({ 'release' => hash_params[:min_release],
-                               'duration' => hash_params[:min_duration],
-                               'language' => ['French', hash_params[:movie_title]],
-                               'rating' => [hash_params[:min_rating], hash_params[:max_rating]] })
-        @finder.user = current_user
-        authorize @finder
 
         if @finder.save
           upper_limit
@@ -58,6 +58,8 @@ module Api
         else
           render_error
         end
+
+
       end
 
       def destroy
