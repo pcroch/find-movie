@@ -189,7 +189,9 @@ Coming soon
       More information will coming soon
       
 ### C- Unit Testing Description
-
+      Some testing are already setup for some controllers and some models.
+      
+      
       Coming soon
 
 ## IV. What next?
