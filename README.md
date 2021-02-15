@@ -218,4 +218,3 @@ Coming soon
 - [ ] Improving the rendering in index, show and create
 
 
-
