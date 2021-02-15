@@ -169,7 +169,13 @@ Render:
         
 (CORS) is already setup and so the api is ready to be used in production.
 
-### C- Error rendering description:
+### C- Caching       
+        
+There is cache only for two actions: Index & Show as there is no need for authentication for those actions.
+
+The index action has a cache of 3 minutes and the Show action has a cache of 1 minute. Which means that you have to wait a while to see the change actually being seen on the json reponse.
+
+### D- Error rendering description:
 
 Coming soon
 
