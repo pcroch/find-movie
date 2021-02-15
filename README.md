@@ -14,7 +14,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 ### End-points: 
     
-    Production: [https://movie-api-finder.herokuapp.com/api/v1/finders](https://movie-api-finder.herokuapp.com/api/v1/finders)
+    Production: (https://movie-api-finder.herokuapp.com/api/v1/finders)
     In testing: URL: http://localhost:3000/api/v1/finders
  
 ### Installation:  
