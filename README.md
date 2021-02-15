@@ -116,7 +116,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 #### Show Action: Get a specific event on the db
   Fetch:
   
-    curl -s (https://movie-api-finder.herokuapp.com/api/v1/finder/:id) | jq
+    curl -s https://movie-api-finder.herokuapp.com/api/v1/finder/:id | jq
     Where id is the id of the event. It must be an integer
  Render:  
       
