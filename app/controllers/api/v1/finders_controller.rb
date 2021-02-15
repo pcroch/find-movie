@@ -3,14 +3,12 @@
 module Api
   module V1
     class FindersController < Api::V1::BaseController
-      # caches_page :index
       acts_as_token_authentication_handler_for User, except: %i[index show]
       before_action :set_finder, only: %i[show update destroy]
 
       def index
         @finders = policy_scope(Finder)
         @movies = Movie.where(finder_id: @finders)
-        # expires_in 2.minutes, public: true
       end
 
       def show; end
@@ -107,11 +105,7 @@ module Api
           tmp.each { |string| @preferences.append(string) }
           # creating the hash that will count the number of ocurance for each movie category
           @counts = Hash.new(0)
-          # Useless line , I keep it for now, just in case :/
-          # @preferences.each { |preference| @counts[preference] += 1 }
-
           # create an has: count with the number of ocurance for each movie category
-          # @counts = @preferences.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
           @counts = @preferences.each_with_object(Hash.new(0)) { |e, total| total[e] += 1 }
           i += 1
         end
