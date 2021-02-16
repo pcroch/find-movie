@@ -14,7 +14,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
   
    Production: https://movie-api-finder.herokuapp.com/api/v1/finders
    
-   Locally:  http://localhost:3000/api/v1/finders
+   Locally: http://localhost:3000/api/v1/finders
  
 ### Installation:  
 
@@ -49,8 +49,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
 
 #### Sign-up the API
   When you sin in, you **MUST** keep somewhere the authentication_token otherwise you won't be able to sign when creating new event. It will look like this *"authentication_token": "4xxvRjtXFUPPMubjs94t"*
-  
-  
+    
   Fetch: 
   
       curl -i -X POST                                                                                                                     \
@@ -198,8 +197,7 @@ Coming soon
       
 ### C- Unit Testing Description
       Some testing are already setup for some controllers and some models.
-      
-      
+            
       Coming soon
 
 ## IV. What next?
@@ -214,6 +212,6 @@ Coming soon
 - [x] Memcache - get - check again
 - [x] Memcache - paging - check again
 - [ ] Improving the rendering in index, show and create
-- [-] Should have minimum 3 movies on the response!
+- [ ] Should have minimum 3 movies on the response!
 
 
