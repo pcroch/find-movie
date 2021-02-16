@@ -214,6 +214,6 @@ Coming soon
 - [x] Memcache - get - check again
 - [x] Memcache - paging - check again
 - [ ] Improving the rendering in index, show and create
-- [ ] Should have minimum 3 movies on the response!
+- [-] Should have minimum 3 movies on the response!
 
 
