@@ -21,7 +21,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
   
     1 * launch and install the rails server with the following command:
         git clone git@github.com:pcroch/
-        cd bfinder-movie 
+        cd finder-movie 
         yarn install && bundle install
         rails db:create db:migrate db:seed
         rails s
