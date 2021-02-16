@@ -58,7 +58,7 @@ RSpec.describe 'Integration testing', type: :request do
     before do
       sample_body = { "finder": {
         "release": 2020,
-        "duration": 200,
+        "duration": 160,
         "attendees": ['Test'],
         "rating": [0, 10]
       } }
@@ -67,8 +67,8 @@ RSpec.describe 'Integration testing', type: :request do
     end
     it 'should have the same title and vote average' do
       json_response = JSON.parse(response.body)
-      expect(json_response['movies'][0]['title']).to eq('Possessor Uncut')
-      expect(json_response['movies'][0]['vote_average']).to eq('6.6')
+      expect(json_response['movies'][0]['title']).to eq('Wonder Woman 1984')
+      expect(json_response['movies'][0]['vote_average']).to eq('7')
     end
 
     it 'should return status code created 201' do
