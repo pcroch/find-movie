@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module Api
   module V1
     class FindersController < Api::V1::BaseController
@@ -25,28 +24,29 @@ module Api
         # render json: { error: "No movie found" }, status: :not_found if finder_params[:rating].nil?
         find_genre_id
 
-        hash_params = { min_release: finder_params[:release],
+        @hash_params = { min_release: finder_params[:release],
                         min_duration: finder_params[:duration],
                         vote_count: 100,
                         min_rating: finder_params[:rating].min,
-                        max_rating: finder_params[:rating].max }
+                        max_rating: finder_params[:rating].max,
+                        genre: nil                     }
 
         matching_preferences
         choice_count
 
-        @finder = Finder.new({ 'release' => hash_params[:min_release],
-                               'duration' => hash_params[:min_duration],
+        @finder = Finder.new({ 'release' => @hash_params[:min_release],
+                               'duration' => @hash_params[:min_duration],
                                'language' => ['French'],
-                               'rating' => [hash_params[:min_rating], hash_params[:max_rating]] })
+                               'rating' => [@hash_params[:min_rating], @hash_params[:max_rating]] })
         @finder.user = current_user
         authorize @finder
 
-        find_country(hash_params[:min_release],
-                     hash_params[:min_duration],
-                     hash_params[:vote_count],
-                     hash_params[:min_rating],
-                     hash_params[:max_rating],
-                     hash_params[:genre])
+        find_country(@hash_params[:min_release],
+                     @hash_params[:min_duration],
+                     @hash_params[:vote_count],
+                     @hash_params[:min_rating],
+                     @hash_params[:max_rating],
+                     @hash_params[:genre])
 
         if @finder.save
           upper_limit
@@ -134,7 +134,7 @@ module Api
 
       def choice_count
         choice = @counts.max_by { |_k, v| v }
-        @genre = @genre_hash[choice[0].to_sym]
+        @hash_params[:genre] = @genre_hash[choice[0].to_sym]
         # Pop first item of the array which is the choice
         @counts.shift
 
