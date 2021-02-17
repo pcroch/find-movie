@@ -21999,3 +21999,919 @@ Processing by Api::V1::FindersController#create as JSON
   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 1519)
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:52 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.6ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.4ms | Allocations: 1559)
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 4.4ms | Allocations: 7686)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:52 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 230)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 690)
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$5WDSV3AdZOVslwhBvDN/oudvZGIhJD6UqprNzqtUmL1vhgBYQNeiG"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:52.906304"], ["updated_at", "2021-02-17 10:48:52.906304"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (1.5ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:52.918082"], ["updated_at", "2021-02-17 10:48:52.918082"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:52.924357"], ["updated_at", "2021-02-17 10:48:52.924357"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/finders/1" for 127.0.0.1 at 2021-02-17 10:48:52 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 2.4ms | Allocations: 1473)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.8ms | Allocations: 2296)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$z/VbgBKoVU1iqBYPrc7hW.8SJyBIVNdVQj/SShxzurOZ.gpBH0gKO"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:52.949392"], ["updated_at", "2021-02-17 10:48:52.949392"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:52.951041"], ["updated_at", "2021-02-17 10:48:52.951041"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:52.952277"], ["updated_at", "2021-02-17 10:48:52.952277"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/finders/1" for 127.0.0.1 at 2021-02-17 10:48:52 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 313)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 835)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$SmjdSlWkUkeamKzzNxw3veU9vI8Y/zIbe1Pug9k0XZeg7eUcD18NO"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:52.961421"], ["updated_at", "2021-02-17 10:48:52.961421"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:52.962995"], ["updated_at", "2021-02-17 10:48:52.962995"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:52 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2020", "duration"=>"160", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (132.70ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=160&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (552 Bytes)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.6ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "160"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.408091"], ["updated_at", "2021-02-17 10:48:53.408091"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 17], ["created_at", "2021-02-17 10:48:53.418537"], ["updated_at", "2021-02-17 10:48:53.418537"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 17]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.9ms | Allocations: 408)
+Completed 201 Created in 453ms (Views: 1.2ms | ActiveRecord: 2.7ms | Excon: 132.7ms | Allocations: 220064)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$TOnpEjNF.mmQX4nuGtrR5OCUmk1yFgRAg3pXIse0wTuF1YuWqPIVm"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:53.425892"], ["updated_at", "2021-02-17 10:48:53.425892"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.428588"], ["updated_at", "2021-02-17 10:48:53.428588"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2020", "duration"=>"160", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (75.20ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=160&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (552 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "160"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.560518"], ["updated_at", "2021-02-17 10:48:53.560518"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 18], ["created_at", "2021-02-17 10:48:53.563143"], ["updated_at", "2021-02-17 10:48:53.563143"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 18]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.8ms | Allocations: 395)
+Completed 201 Created in 132ms (Views: 1.1ms | ActiveRecord: 1.6ms | Excon: 75.2ms | Allocations: 8344)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "qwerty"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "rER_xC1c265teGNY3yx6"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$DT7xMs/dlJTlu509ISNGj.SX5yt..4NADZaWmOOub9eTktwVOp.Za"], ["user_name", "qwerty"], ["created_at", "2021-02-17 10:48:53.579299"], ["updated_at", "2021-02-17 10:48:53.579299"], ["authentication_token", "rER_xC1c265teGNY3yx6"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 1933)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "qwerty"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "SoW2A_DA5NUdSVgAV4ax"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$95sF00W65bVZUJQONGv.3eEHncWMR1HGIHf693r5qcz96dwU1whs."], ["user_name", "qwerty"], ["created_at", "2021-02-17 10:48:53.586011"], ["updated_at", "2021-02-17 10:48:53.586011"], ["authentication_token", "SoW2A_DA5NUdSVgAV4ax"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1712)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$UBCJSE8eJyOJVmbpT8nA7eOAdExqH07uYU8S2FFemnAwUpudj5tXa"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:53.589453"], ["updated_at", "2021-02-17 10:48:53.589453"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.590987"], ["updated_at", "2021-02-17 10:48:53.590987"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (69.63ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 236ms (Views: 0.1ms | ActiveRecord: 0.2ms | Excon: 69.6ms | Allocations: 7446)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$tRzHaAuw5Gql1fEHjO7AhuTGvNDgQ2zVfo1ohSDFqOGw2BXMLmq7e"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:53.833628"], ["updated_at", "2021-02-17 10:48:53.833628"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.835449"], ["updated_at", "2021-02-17 10:48:53.835449"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (66.31ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 118ms (Views: 0.1ms | ActiveRecord: 0.3ms | Excon: 66.3ms | Allocations: 7266)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$wdlQHGRh44na5QZpyjZt4.jY/slZ2alGYgbxyBa2dKYxYv19w2xwq"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:53.962603"], ["updated_at", "2021-02-17 10:48:53.962603"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:53.965136"], ["updated_at", "2021-02-17 10:48:53.965136"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:53 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"-2", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (78.60ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-2-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 446ms (Views: 0.1ms | ActiveRecord: 0.3ms | Excon: 78.6ms | Allocations: 6923)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$WlEH.eTg6ot0etiqmLCNneqS75UbJWNgI6pJzQrEFNJ40Jb9gsvlG"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:54.431422"], ["updated_at", "2021-02-17 10:48:54.431422"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.433994"], ["updated_at", "2021-02-17 10:48:54.433994"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"-2", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (75.18ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-2-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 127ms (Views: 0.1ms | ActiveRecord: 0.3ms | Excon: 75.2ms | Allocations: 6879)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$JnZJtfiPUTBTh2IXK2JaQ.LC4YF3ZdahdJJfyvDrhJP39tiPqb96C"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:54.570620"], ["updated_at", "2021-02-17 10:48:54.570620"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.573201"], ["updated_at", "2021-02-17 10:48:54.573201"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"10000", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (75.19ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=10000-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "10000"], ["duration", "200"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.820123"], ["updated_at", "2021-02-17 10:48:54.820123"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 404 Not Found in 244ms (Views: 0.1ms | ActiveRecord: 0.7ms | Excon: 75.2ms | Allocations: 6902)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$HSaeE.Erii7ypf0xskxl.ueP1aux2Ja6oBM14sxW9lCSDrk6qPz.6"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:54.826963"], ["updated_at", "2021-02-17 10:48:54.826963"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.1ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.829373"], ["updated_at", "2021-02-17 10:48:54.829373"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"10000", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (74.48ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=10000-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "10000"], ["duration", "200"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.962871"], ["updated_at", "2021-02-17 10:48:54.962871"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 404 Not Found in 130ms (Views: 0.1ms | ActiveRecord: 0.5ms | Excon: 74.5ms | Allocations: 6867)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$bi6B02tNyhq.PB0z.zMwPeBRFknsPLBmM24jZMpLfXw0BJS0Ko.Iq"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:54.969096"], ["updated_at", "2021-02-17 10:48:54.969096"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:54.971493"], ["updated_at", "2021-02-17 10:48:54.971493"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:54 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (75.24ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 266ms (Views: 0.2ms | ActiveRecord: 0.2ms | Excon: 75.3ms | Allocations: 8714)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$OduRorDRIaC.UGJFgvos8eoQaPlCDbD2ssDZf/2O8/zaKzeC4dH4K"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.246921"], ["updated_at", "2021-02-17 10:48:55.246921"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.249366"], ["updated_at", "2021-02-17 10:48:55.249366"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (72.16ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 128ms (Views: 0.1ms | ActiveRecord: 0.2ms | Excon: 72.2ms | Allocations: 8320)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$odYQPbqF8FrqdU29FuJBPeTi.wtnxybmjC8/uA9gTB46cPAkNTyWe"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.387150"], ["updated_at", "2021-02-17 10:48:55.387150"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.389639"], ["updated_at", "2021-02-17 10:48:55.389639"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"-2", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (79.09ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=-2&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 278ms (Views: 0.1ms | ActiveRecord: 0.2ms | Excon: 79.1ms | Allocations: 7956)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$XEIKG4Dx8tWtHUIeCEIUL.whVKkSThJKdgODtmuvwjKr0dYIFJaje"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.677399"], ["updated_at", "2021-02-17 10:48:55.677399"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.679820"], ["updated_at", "2021-02-17 10:48:55.679820"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"-2", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (74.48ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=-2&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 135ms (Views: 0.1ms | ActiveRecord: 0.2ms | Excon: 74.5ms | Allocations: 7920)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$dI5D8PKp1Fl/4gVZxmwuIOlrCVpA/gNGWom93q8sS4LmbcC2b5wyu"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.823755"], ["updated_at", "2021-02-17 10:48:55.823755"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.826206"], ["updated_at", "2021-02-17 10:48:55.826206"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1369)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$S2Ggl0jIXjd2urr.lSB0D.91mKV0SX4NuoRUsV4CHsQ0Eq4PpeMLu"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.837696"], ["updated_at", "2021-02-17 10:48:55.837696"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.840348"], ["updated_at", "2021-02-17 10:48:55.840348"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1356)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$mWNtQXfm.fflU6GrMVoZj.ydwLitfKkww71KStGg5OZJyuK8zhl26"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.851362"], ["updated_at", "2021-02-17 10:48:55.851362"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.1ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.853776"], ["updated_at", "2021-02-17 10:48:55.853776"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1516)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$5/2G783..TWzej/.5k9WkeGqyWozG14WRcXISSlpPNTfppmvjwBMG"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.864999"], ["updated_at", "2021-02-17 10:48:55.864999"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.867400"], ["updated_at", "2021-02-17 10:48:55.867400"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1515)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$Zj4HQw1zTtAAAH4NijaZcOIeZb.F0Al6xIYOKszrnshdYpgvsd1Ty"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.878414"], ["updated_at", "2021-02-17 10:48:55.878414"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.880746"], ["updated_at", "2021-02-17 10:48:55.880746"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1515)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$8ZXVvZRBgdCc63EGa/a05u6NmOo9pSRvOsw8y/ZVXx4Lvjw9A5zfe"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:48:55.892212"], ["updated_at", "2021-02-17 10:48:55.892212"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:48:55.914419"], ["updated_at", "2021-02-17 10:48:55.914419"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:48:55 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 1519)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.3ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 2.5ms | Allocations: 1559)
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 4.4ms | Allocations: 7686)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#index as JSON
+  Rendering api/v1/finders/index.json.jbuilder
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders"[0m
+  Rendered api/v1/finders/index.json.jbuilder (Duration: 0.4ms | Allocations: 230)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 690)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$iMpLVgL8kU8yW5EOPAZdweMPyF.WJKRsbR14z6lTIRxn1OTUz3e8y"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.270851"], ["updated_at", "2021-02-17 10:53:30.270851"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.280635"], ["updated_at", "2021-02-17 10:53:30.280635"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.285470"], ["updated_at", "2021-02-17 10:53:30.285470"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/finders/1" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.2ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 1.7ms | Allocations: 1473)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 2296)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$BFFjhXg5ovGYu9TnMM/xX.FIagluCLTdf2HJJT17lvG2UTLdpQCZu"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.294282"], ["updated_at", "2021-02-17 10:53:30.294282"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.4ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.310095"], ["updated_at", "2021-02-17 10:53:30.310095"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFinder Create (0.2ms)[0m  [1m[32mINSERT INTO "finders" ("id", "release", "duration", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["release", "2020"], ["duration", "200"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.311865"], ["updated_at", "2021-02-17 10:53:30.311865"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/finders/1" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 1]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 313)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 835)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$feuyas5IofwTD10Ybqbq3OyTverjP7ffJt5UHxa./D6QpS0iqXV/i"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.318896"], ["updated_at", "2021-02-17 10:53:30.318896"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.320684"], ["updated_at", "2021-02-17 10:53:30.320684"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2020", "duration"=>"160", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (111.83ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=160&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (552 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "160"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.583571"], ["updated_at", "2021-02-17 10:53:30.583571"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 21], ["created_at", "2021-02-17 10:53:30.590118"], ["updated_at", "2021-02-17 10:53:30.590118"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 21]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.5ms | Allocations: 408)
+Completed 201 Created in 267ms (Views: 0.6ms | ActiveRecord: 2.9ms | Excon: 111.8ms | Allocations: 220136)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$IY2XySjcnxXWMkXafDmrtOA6peGc6vfaRK8rzcm7hbwVKrMNGAuhC"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.594298"], ["updated_at", "2021-02-17 10:53:30.594298"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.595723"], ["updated_at", "2021-02-17 10:53:30.595723"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"2020", "duration"=>"160", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (70.67ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=160&primary_release_date.gte=2020-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (552 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.3ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "2020"], ["duration", "160"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.720191"], ["updated_at", "2021-02-17 10:53:30.720191"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Load (0.1ms)[0m  [1m[34mSELECT "finders".* FROM "finders" WHERE "finders"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mMovie Create (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "overview", "vote_average", "finder_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wonder Woman 1984"], ["overview", "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."], ["vote_average", "7"], ["finder_id", 22], ["created_at", "2021-02-17 10:53:30.722744"], ["updated_at", "2021-02-17 10:53:30.722744"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering api/v1/finders/show.json.jbuilder
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."finder_id" = $1[0m  [["finder_id", 22]]
+  Rendered api/v1/finders/show.json.jbuilder (Duration: 0.8ms | Allocations: 395)
+Completed 201 Created in 126ms (Views: 1.1ms | ActiveRecord: 1.4ms | Excon: 70.7ms | Allocations: 8419)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "qwerty"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "2uh-W_L5ovFmDafNByqq"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$J5.yWY7SS9Ucpgwlr.3m/eT6ou8W0Ve4S7.h0cnky.yhQ9ZB4htuy"], ["user_name", "qwerty"], ["created_at", "2021-02-17 10:53:30.737548"], ["updated_at", "2021-02-17 10:53:30.737548"], ["authentication_token", "2uh-W_L5ovFmDafNByqq"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 1933)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"9@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_name"=>"qwerty"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "qwerty"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = $1[0m  [["authentication_token", "kSTBfzgupVbz3Pa7Dfn-"]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "9@example.com"], ["encrypted_password", "$2a$04$hlEOH.nWaTMn2GvQY9k2M..CI54iNGRm.2z265Z/zHTg0pScLpx5i"], ["user_name", "qwerty"], ["created_at", "2021-02-17 10:53:30.748509"], ["updated_at", "2021-02-17 10:53:30.748509"], ["authentication_token", "kSTBfzgupVbz3Pa7Dfn-"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1712)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$y3Abq.3OGonDcwT763Gdp.sMMvgY4y8r6bXhrujJFNy8RduORcOUu"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.754444"], ["updated_at", "2021-02-17 10:53:30.754444"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.756844"], ["updated_at", "2021-02-17 10:53:30.756844"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (79.43ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 133ms (Views: 0.2ms | ActiveRecord: 0.3ms | Excon: 79.4ms | Allocations: 7468)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$M80UmM8JwSxi.i4I5.2IdeMDXyyUkAJvbtuhbla3ArvmZRfPcQUwy"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:30.897903"], ["updated_at", "2021-02-17 10:53:30.897903"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:30.899792"], ["updated_at", "2021-02-17 10:53:30.899792"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:30 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (68.10ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 120ms (Views: 0.1ms | ActiveRecord: 0.3ms | Excon: 68.1ms | Allocations: 7341)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$ikSoHjoE.PeyDi1ybvZ5B.eWGrcuzerg50MfrqvSwosPrMA8UGJfa"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.029227"], ["updated_at", "2021-02-17 10:53:31.029227"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.032181"], ["updated_at", "2021-02-17 10:53:31.032181"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"-2", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (77.09ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-2-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 131ms (Views: 0.1ms | ActiveRecord: 0.5ms | Excon: 77.1ms | Allocations: 6954)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$SdpsmBiccRDk5FfVYQCZl.7VW9LNkVSHzsjd3cCYBoUVh2H3rMrSS"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.176461"], ["updated_at", "2021-02-17 10:53:31.176461"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.179418"], ["updated_at", "2021-02-17 10:53:31.179418"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"-2", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.2ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (81.73ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=-2-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+Completed 422 Unprocessable Entity in 135ms (Views: 0.1ms | ActiveRecord: 0.4ms | Excon: 81.7ms | Allocations: 6945)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$yddbscYvgloV56N7Djz0ku1kGVdmcYWpZXsQn1tSqVQxWWsHBqqvu"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.325207"], ["updated_at", "2021-02-17 10:53:31.325207"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.328179"], ["updated_at", "2021-02-17 10:53:31.328179"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"10000", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (78.36ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=10000-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "10000"], ["duration", "200"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.477889"], ["updated_at", "2021-02-17 10:53:31.477889"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 404 Not Found in 147ms (Views: 0.1ms | ActiveRecord: 1.0ms | Excon: 78.4ms | Allocations: 6933)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$0nwKPnyME7tyhgCfBg4CBeqWECwDZLpKDPk5gI8eNeWBYwHobRzh2"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.485575"], ["updated_at", "2021-02-17 10:53:31.485575"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.488531"], ["updated_at", "2021-02-17 10:53:31.488531"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"10000", "duration"=>"200", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (79.60ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=200&primary_release_date.gte=10000-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (57 Bytes)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFinder Create (0.4ms)[0m  [1m[32mINSERT INTO "finders" ("release", "duration", "language", "rating", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["release", "10000"], ["duration", "200"], ["language", "{N/A}"], ["rating", "{0,10}"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.628390"], ["updated_at", "2021-02-17 10:53:31.628390"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 404 Not Found in 137ms (Views: 0.1ms | ActiveRecord: 1.0ms | Excon: 79.6ms | Allocations: 6942)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$XZTg3lzW0lhmFUOlkbDxO.JB67TXtuv3qQ8/PhAB2s2ZscflsO672"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.635737"], ["updated_at", "2021-02-17 10:53:31.635737"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.638688"], ["updated_at", "2021-02-17 10:53:31.638688"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (80.33ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 140ms (Views: 0.2ms | ActiveRecord: 0.3ms | Excon: 80.3ms | Allocations: 8774)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$xls5ebOtn7zYZzvzgLqBS.9EK06wK9uM4lLp0eyC6ROd9vJXkT9MO"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.789098"], ["updated_at", "2021-02-17 10:53:31.789098"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.792073"], ["updated_at", "2021-02-17 10:53:31.792073"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (78.18ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 138ms (Views: 0.2ms | ActiveRecord: 0.3ms | Excon: 78.2ms | Allocations: 8395)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$5u8kWEgchqHPWHKdr.LtPOcdgVf1xN2QSGwZVZ5OeoJynnRO2Bo2m"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:31.940147"], ["updated_at", "2021-02-17 10:53:31.940147"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:31.943132"], ["updated_at", "2021-02-17 10:53:31.943132"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:31 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"-2", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (79.71ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=-2&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.02ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 137ms (Views: 0.2ms | ActiveRecord: 0.3ms | Excon: 79.7ms | Allocations: 8013)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$pqWUNe9iS2ImAY5GgRNgruzDvdCxAI7KBiTKXgj6Vp/7tbiLqbMbq"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.090256"], ["updated_at", "2021-02-17 10:53:32.090256"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.093251"], ["updated_at", "2021-02-17 10:53:32.093251"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"-2", "attendees"=>["Test"], "rating"=>["0", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mPreference Load (0.1ms)[0m  [1m[34mSELECT "preferences".* FROM "preferences" WHERE "preferences"."name" = $1[0m  [["name", "Test"]]
+  [1m[34mExcon Request[0m (75.26ms)  GET https://api.themoviedb.org/3/discover/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1&with_genres=28&vote_average.gte=0&vote_average.lte=10&with_runtime.gte=-2&primary_release_date.gte=1900-01-01&vote_count.gte=100[0m
+  [1m[34mExcon Response[0m (0.01ms)  [1m200 OK (12 KB)[0m
+Completed 422 Unprocessable Entity in 135ms (Views: 0.1ms | ActiveRecord: 0.3ms | Excon: 75.3ms | Allocations: 7950)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$ixlbKLEkcijnRkke4.88xunGFInRLo8h.DQUheRmcS4kjwnUqpRKe"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.238867"], ["updated_at", "2021-02-17 10:53:32.238867"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.241832"], ["updated_at", "2021-02-17 10:53:32.241832"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1368)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$vwUfb.gHCSKHR.RzSCsrEui6s7ao3Xkj01VOnkF4Weewqo699Vp8u"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.254047"], ["updated_at", "2021-02-17 10:53:32.254047"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.3ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.257027"], ["updated_at", "2021-02-17 10:53:32.257027"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "attendees"=>["Pierre"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1355)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$2JbMyIBxNjYh0a.Dtk8g1uup2mLnoxMczPnaWKLBMMZ4Onmbh3Sfm"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.269305"], ["updated_at", "2021-02-17 10:53:32.269305"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.271889"], ["updated_at", "2021-02-17 10:53:32.271889"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 1515)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$2xi1xjO6dEf2OpAgfp/T4eE4DDHrDOHOuku7WTR8B0yE/mpCheCdC"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.284255"], ["updated_at", "2021-02-17 10:53:32.284255"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.287064"], ["updated_at", "2021-02-17 10:53:32.287064"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1514)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$oQz6EDQWmssSiA2Kj3K1Aeo/AznFgcTkO0z3lJcb7R0ATb/2gJQU2"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.299263"], ["updated_at", "2021-02-17 10:53:32.299263"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.301756"], ["updated_at", "2021-02-17 10:53:32.301756"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1514)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER($1) LIMIT $2[0m  [["user_name", "TestUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "user_name", "created_at", "updated_at", "authentication_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["email", "test@test.test"], ["encrypted_password", "$2a$04$7RPnorGQGniftURGm//M2ejNccRnTLKIgRXKG9amGvNwb//GmzR8y"], ["user_name", "TestUser"], ["created_at", "2021-02-17 10:53:32.312502"], ["updated_at", "2021-02-17 10:53:32.312502"], ["authentication_token", "KdapjiY6vz-sBkKmNabc"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPreference Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "preferences" WHERE LOWER("preferences"."name") = LOWER($1) LIMIT $2[0m  [["name", "Test"], ["LIMIT", 1]]
+  [1m[36mPreference Create (0.2ms)[0m  [1m[32mINSERT INTO "preferences" ("content", "name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "{Action,Comedy,Horror}"], ["name", "Test"], ["user_id", 1], ["created_at", "2021-02-17 10:53:32.314033"], ["updated_at", "2021-02-17 10:53:32.314033"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/v1/finders" for 127.0.0.1 at 2021-02-17 10:53:32 +0000
+Processing by Api::V1::FindersController#create as JSON
+  Parameters: {"finder"=>{"release"=>"1900", "duration"=>"190", "rating"=>["1", "10"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.test"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1521)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
