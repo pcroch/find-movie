@@ -33,7 +33,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
         X-User-Email    pierre@pierre.pierre
         X-User-Token    KdapjiY6vz-sBkKmNieF
         
-     This is a default user to demonstration. You can of course create your own user. PLease see below.
+     This is a default user to demonstration. You can of course create your own user. Please see below.
      
     2 * Body: 
        { "finder": {
