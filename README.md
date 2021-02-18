@@ -44,6 +44,25 @@ Basically, my api will render a list one ten movies maximum based on the followi
        }}
        
       This is an example of a  raw body request
+### Body variables:
+   - Release:
+    
+    *Release year of the movie           
+    *Positive integer with a maximum of 4 digits
+   
+   - Duration:
+      *Duration of the movies im minutes
+      *Positive integer
+      
+   - Rating:
+   
+      *Rating range to choose movies
+      *Positive integer between 0 and 10
+      
+  - Attendees:
+
+      *List of people for the event. The name must be the name of the preferences but nt hte username
+      
 
 ## III. HOW TO
 
