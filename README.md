@@ -47,18 +47,18 @@ Basically, my api will render a list one ten movies maximum based on the followi
 ### Body variables:
    - Release:
     
-    *Release year of the movie           
-    *Positive integer with a maximum of 4 digits
+          *Release year of the movie           
+          *Positive integer with a maximum of 4 digits
    
    - Duration:
       
-    *Duration of the movies im minutes
-    *Positive integer
+          *Duration of the movies im minutes
+          *Positive integer
       
    - Rating:
    
-    *Rating range to choose movies
-    *Positive integer between 0 and 10
+          *Rating range to choose movies
+          *Positive integer between 0 and 10
       
   - Attendees:
 
