@@ -61,10 +61,10 @@ Basically, my api will render a list one ten movies maximum based on the followi
     *Positive integer between 0 and 10
       
   - Attendees:
-  
-        *Positive integer between 0 and 10*List of people for the event. The name must be the name of the preferences but nt hte username
-      
 
+        *Positive integer between 0 and 10*List of people for the event. 
+        *The name must be the name of the preferences but not the username
+    
 ## III. HOW TO
 
 #### Sign-up the API
