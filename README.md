@@ -161,7 +161,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
     
 
 #### Create Action: create an event via a post reauest
-   You need to be authenticated and of course have the authorization. It is granted when you sign up.
+   You need to be *authenticated* and of course have the *authorization*. It is granted when you sign up.
 
 Fetch: 
    
