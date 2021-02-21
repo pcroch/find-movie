@@ -229,8 +229,6 @@ Coming soon
 - [ ] creating an admin with full right to delete
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
-- [x] Memcache - get - MVP
-- [x] Memcache - paging - MVP
 - [ ] Improving the rendering in index, show and create
 
 
