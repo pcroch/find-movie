@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Error handeling testing when creating an event:', type: :request do
+RSpec.describe 'Unit Testing: Error handeling testing when creating an event:', type: :request do
   describe 'Missing the release params' do
     let!(:user) { User.create(email: 'test@test.test', password: 'testest', user_name: 'TestUser', authentication_token: 'KdapjiY6vz-sBkKmNabc', id: 1) }
     let!(:pref) { Preference.create(user_id: 1, name: 'Test', content: %w[Action Comedy Horror]) }
