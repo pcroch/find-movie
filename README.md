@@ -33,7 +33,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
         X-User-Email    pierre@pierre.pierre
         X-User-Token    KdapjiY6vz-sBkKmNieF
         
-     This is a default user to demonstration. You can of course create your own user. PLease see below.
+     This is a default user to demonstration. You can of course create your own user. Please see below.
      
     2 * Body: 
        { "finder": {
@@ -44,7 +44,27 @@ Basically, my api will render a list one ten movies maximum based on the followi
        }}
        
       This is an example of a  raw body request
+### Body variables:
+   - Release:
+    
+          *Release year of the movie           
+          *Positive integer with a maximum of 4 digits
+   
+   - Duration:
+      
+          *Duration of the movies im minutes
+          *Positive integer
+      
+   - Rating:
+   
+          *Rating range to choose movies
+          *Positive integer between 0 and 10
+      
+  - Attendees:
 
+          *List of people for the event. 
+          *The name must be the name given in the preferences but not the username
+    
 ## III. HOW TO
 
 #### Sign-up the API
@@ -141,7 +161,7 @@ Basically, my api will render a list one ten movies maximum based on the followi
     
 
 #### Create Action: create an event via a post reauest
-   You need to be authenticated and of course have the authorization. It is granted when you sign up.
+   You need to be *authenticated* and of course have the *authorization*. It is granted when you sign up.
 
 Fetch: 
    
@@ -209,8 +229,6 @@ Coming soon
 - [ ] creating an admin with full right to delete
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
-- [x] Memcache - get - MVP
-- [x] Memcache - paging - MVP
 - [ ] Improving the rendering in index, show and create
 
 
