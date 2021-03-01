@@ -230,5 +230,6 @@ Coming soon
 - [ ] Cors testing the setup
 - [ ] validation of data for duration and attendees
 - [ ] Improving the rendering in index, show and create
+- [ ] Refactoring improving OOP paradigm **Priority high**
 
 
